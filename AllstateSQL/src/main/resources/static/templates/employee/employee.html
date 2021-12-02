@@ -1,0 +1,236 @@
+
+<div>
+	<uib-tabset active="activeJustified" justified="true"> <uib-tab
+		style="    text-align: left;" heading="Employee"> <!-- Upload Form Start  -->
+
+	<!-- Upload End   --> <!-- Upload Form Start  -->
+	<div class="material mt-5" ng-show="uploadTab">
+		<legend class="dotted text-center"
+			style="color: #616060; font-size: 18px;">
+			<b>Upload Assets</b>
+		</legend>
+		<hr>
+		<form class="row g-3">
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label">Upload (.xmlx)</label>
+				<input id="uploadEmployee" class="form-control" type="file"
+					accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+
+				<span ng-show="uploadErr" style="color: red"> * file is
+					mandatory</span> <a href="assets/uploadExcel/Employee	.xlsx" type="button"
+					class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"
+					id="tooltip-touch" title="Upload"
+					style="margin: 10px; display: inline-block;">Download format</a>
+
+
+			</div>
+
+
+
+
+			<div class="col-12 mt-4 text-center">
+				<button type="submit" class="save" ng-click="vm.uploadSave()">Upload</button>
+				<button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+
+
+			</div>
+		</form>
+	</div>
+	<!-- Upload End   --> 
+	<!-- Add New Form Start  -->
+	<div class="material mt-5" ng-show="addNewDepartment">
+		<legend class="dotted text-center"
+			style="color: #616060; font-size: 18px;">
+			<b>Add New Department</b>
+		</legend>
+		<hr>
+		<form class="row g-3">
+	
+			<div class="col-md-6">
+				  <label for="inputCity" class="col-form-label">Department Name</label> 
+						                                                <input type="text" class="form-control" id="invNo" ng-model="department.departmentName"   placeholder="Enter department name">
+						                                             <span ng-show="depatName" style="color:red">  * Department name is mandatory</span>
+			</div>
+			
+
+			
+			<div class="col-12 mt-4 text-center">
+				<button type="submit" class="save" ng-click="vm.saveDepartment(department)" >Submit</button>
+				<button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+
+
+			</div>
+		</form>
+	</div>
+	<!-- Add New Form End   --> 
+	<!-- Add Department Start  -->
+	<div class="material mt-5" ng-show="addNew">
+		<legend class="dotted text-center"
+			style="color: #616060; font-size: 18px;">
+			<b>Add New Employee</b>
+		</legend>
+		<hr>
+		<form class="row g-3">
+			<div class="col-md-6">
+
+
+				<label for="inputState" class="form-label">Department</label> <sup
+					style="color: red;">*</sup>
+				<button type="button"
+					class="btn btn-icon waves-effect waves-light btn-success pull-right"
+					style="margin: 9px; height: 32px;" title="Add new Department"
+					ng-click="vm.addNewDepartment()">
+					<i class="bi bi-plus-square"></i>
+				</button>
+				<select class="form-control" ng-model="vm.employee.department.departmentId"
+					ng-options="department.departmentId as department.departmentName for department in vm.departments"
+					required>
+					<option value="" disabled selected>Select Department</option>
+				</select> <span ng-show="deptalrt" style="color: red"> * Department is
+					mandatory</span>
+			</div>
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label"
+					style="margin: 9px; height: 32px;">Employee Name</label> <input
+					type="text" class="form-control" id="invNo"
+					ng-model="vm.employee.employeeName" placeholder="Enter Employee Name">
+				<span ng-show="empName" style="color: red"> * Employee name
+					is mandatory</span>
+			</div>
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label">Employee No</label> <input
+					type="text" class="form-control" id="EmpNO"
+					ng-model="vm.employee.employeeNo" placeholder="Enter Employee No">
+				<span ng-show="empNo" style="color: red"> * Employee no is
+					mandatory</span>
+
+			</div>
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label">UHF Card NO</label> <input
+					type="text" class="form-control" id="uhfCode"
+					ng-model="vm.employee.uhfCode" placeholder="Enter UHF card No">
+				<span ng-show="uhfNo" style="color: red"> * UHF card name is
+					mandatory</span>
+
+			</div>
+
+
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label">Mobile No</label> <input
+					type="number" class="form-control" id="mobileNo"
+					ng-model="vm.employee.mobileNo" placeholder="Enter Mobile No">
+				<span ng-show="invalidMoNo" style="color: red"> * Invalid
+					Mobile NO</span>
+			</div>
+
+			<div class="col-md-6">
+				<label for="inputCity" class="col-form-label">Email Id</label> <input
+					type="email" class="form-control" id="email"
+					ng-model="vm.employee.email" placeholder="Enter Email Id"> <span
+					ng-show="invalidEmail" style="color: red"> * Invalid Mobile
+					NO</span>
+			</div>
+
+
+			
+			<div class="col-12 mt-4 text-center">
+				<button type="submit" class="save" ng-click="vm.save(vm.employee)" >Submit</button>
+				<button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+
+
+			</div>
+		</form>
+	</div>
+	<!-- Add Department Form End   --> 
+	
+	
+	<!-- List View Star -->
+	<div class="material mt-5" >
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-4">
+					<form class="d-flex search">
+						<input class="me-2" type="search" placeholder="Search"
+							aria-label="Search" ng-model="vm.serachText">
+						<button class="searchBtn" type="submit" ng-click="vm.loadEmployees()">Search</button>
+					</form>
+				</div>
+				<div class="col-2 text-center">
+
+					<input type="number" min="1" max="100" class="form-control"
+						ng-model="vm.perPage" ng-change="vm.loadAssets()">
+				</div>
+				<div class="col-2 text-center">
+					<button class="addNew" type="submit" title="Upload Employee"
+						ng-click="vm.upload()">
+						<i class="bi bi-upload" style="margin-right: 10px;"></i>
+					</button>
+				</div>
+				<div class="col-2 text-center">
+					<button class="addNew" type="submit" title="Add New Employee "
+						style="margin-left: 128px;" ng-click="vm.add()">
+						<i class="bi bi-plus-square"></i>
+					</button>
+				</div>
+				<!-- <div class="col-2 text-center">
+					<button class="addNew" type="submit" title="Add New Employee "
+						style="margin-left: 128px;" ng-click="vm.mailSend()">
+						MailSend
+					</button>
+				</div> -->
+
+			</div>
+		</div>
+		<div class="material-tbl mt-3">
+			                        <table id="datatable-buttons" class="text-center table-striped align-middle justify-content-center "
+>
+				<thead>
+					<tr>
+						<th>Sr No</th>
+						<th>Department</th>
+						<th>Name</th>
+						<th>Employee No</th>
+						<th>Email Id</th>
+						<th>Mobile No</th>
+						<th>UHF Card No</th>
+						
+						<th>Action</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-show="vm.employees.length <= 0">
+						<td colspan="8"
+							style="text-align: center; color: #5D6D7E; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Data
+							Not Found!!
+					<tr
+						dir-paginate="employee in vm.employees| filter:q |itemsPerPage:vm.perPage"
+						total-items="vm.total_count" current-page="pagination.current">
+
+
+
+						<th>{{(vm.perPage*(vm.pageno-1))+($index+1)}}</th>
+						<td>{{employee.department.departmentName}}</td>
+						<td>{{employee.employeeName}}</td>
+						<td>{{employee.employeeNo}}</td>
+						<td>{{employee.email}}</td>
+						<td>{{employee.mobileNo}}</td>
+						<td>{{employee.uhfCode}}</td>
+					
+						
+
+						<td>{{asset.status}}</td>
+						<td><i class="bi bi-pencil-square" ng-click="vm.edit(employee)"
+							style="margin-right: 10px;"></i> <i class="bi bi-upc-scan"
+							ng-click="vm.viewQR(asset)"></i></td>
+					</tr>
+
+				</tbody>
+			</table>
+			<dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+
+		</div>
+	</div>
+	
+	<!-- List View Star --> </uib-tab> </uib-tabset>
+</div>

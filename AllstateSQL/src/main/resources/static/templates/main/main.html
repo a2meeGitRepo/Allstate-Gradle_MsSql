@@ -1,0 +1,335 @@
+    <!-- END wrapper -->
+ <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/metisMenu.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+
+        <!-- Counter js  -->
+        <script src="../plugins/waypoints/jquery.waypoints.min.js"></script>
+        <script src="../plugins/counterup/jquery.counterup.min.js"></script>
+
+        <!--C3 Chart-->
+        <script type="text/javascript" src="plugins/d3/d3.min.js"></script>
+        <script type="text/javascript" src="plugins/c3/c3.min.js"></script>
+
+        <!--Echart Chart-->
+        <script src="plugins/echart/echarts-all.js"></script>
+
+        <!-- Dashboard init -->
+        <script src="assets/pages/jquery.dashboard.js"></script>
+
+        <!-- App js -->
+     <style>
+.mydiv {  
+    position:absolute;
+    top:0;
+    overflow: hidden;
+    left:0;
+    width:100%;
+    height:150%;
+    z-index:1000;
+    background-color:grey;
+    opacity: .8;
+ }
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    margin-left: -32px; /* -1 * image width / 2 */
+    margin-top: -22px;  /* -1 * image height / 2 */
+    display: block;   
+    }  
+</style>
+<div ng-if="loader" class="mydiv"> 
+	 <img src="image/transparent-background-loading.gif" class="ajax-loader"/>
+</div> 
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+        <!-- Begin page -->
+        <div id="wrapper">
+			
+          <!-- top navigation for mobile start-->
+
+    <div  id="mobnav">
+        <nav class=" navbar-default mobnav" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo">
+                    <a href="#">
+                        <span><img src="images/allstateHR1.png" alt="logo" class="img-fluid"> </span>
+                    </a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse " uib-collapse="isNavCollapsed">
+                <ul>
+                    <li class="mobnavli">
+                        <a href="#" class="nav-link">
+                            <span class="icon"> <i class="bi bi-speedometer2"></i> </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                  
+                    <li class="mobnavli" ng-click="isCollapsed = !isCollapsed">
+                        <a class="nav-link" href="#">
+                            <span class="icon"> <i class="bi bi-columns-gap"></i></span>
+                            <span class="title">Master</span>
+                            <span class="aro">&rsaquo;</span>
+                        </a>
+                        <ul uib-collapse="isCollapsed">
+                             <li  ><a ui-sref="main.tagUpload" class="nav-link" > <i class="  mdi mdi-remote"></i>Tag Upload</a></li>
+                                   <li  ><a ui-sref="main.asset" class="nav-link" > <i class="  mdi  mdi-cart"></i>Asset </a></li>
+                                   <li  ><a ui-sref="main.employee" class="nav-link">  <i class="fa fa-users"></i>Employee</a></li>
+                                   <li  ><a ui-sref="main.device" class="nav-link">  <i class=" mdi mdi-access-point-network-off
+                                   "></i>Device</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobnavli" ng-click="isCollapsed = !isCollapsed">
+                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            <span class="icon"> <i class="bi bi-receipt"></i></span>
+                            <span class="title">Transaction</span>
+                            <span class="aro">&rsaquo;</span>
+                        </a>
+                        <ul uib-collapse="isCollapsed">
+                            <li><a class="nav-link" href="#">Dashboard</a></li>
+                            <li><a class="nav-link" href="#">Another action</a></li>
+                            <li><a class="nav-link" href="#">Something else here</a></li>
+                            <li><a class="nav-link" href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobnavli" ng-click="isCollapsed = !isCollapsed">
+                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            <span class="icon"> <i class="bi bi-credit-card-2-front"></i></span>
+                            <span class="title">Gate Pass</span>
+                            <span class="aro">&rsaquo;</span>
+                        </a>
+                        <ul uib-collapse="isCollapsed">
+                            <li><a class="nav-link" href="#">Dashboard</a></li>
+                            <li><a class="nav-link" href="#">Another action</a></li>
+                            <li><a class="nav-link" href="#">Something else here</a></li>
+                            <li><a class="nav-link" href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="mobnavli" ng-click="isCollapsed = !isCollapsed">
+                        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            <span class="icon"> <i class="bi bi-file-earmark-ruled"></i></span>
+                            <span class="title">BYOD</span>
+                            <span class="aro">&rsaquo;</span>
+                        </a>
+                        <ul uib-collapse="isCollapsed">
+                            <li><a class="nav-link" href="#">Dashboard</a></li>
+                            <li><a class="nav-link" href="#">Another action</a></li>
+                            <li><a class="nav-link" href="#">Something else here</a></li>
+                            <li><a class="nav-link" href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mobnavli" ng-click="isCollapsed = !isCollapsed">
+                        <a class="nav-link" href="#">
+                            <span class="icon"><i class="bi bi-journal-bookmark-fill"></i></span>
+                            <span class="title">Report</span>
+                            <span class="aro">&rsaquo;</span>
+                        </a>
+                        <ul uib-collapse="isCollapsed">
+                           <li  ><a ui-sref="main.allocationReport" class="nav-link">  <i class=" mdi mdi-access-point-network-off
+                                   "></i>Allocation Report</a></li>
+                            <li><a class="nav-link" href="#">Another action</a></li>
+                            <li><a class="nav-link" href="#">Something else here</a></li>
+                            <li><a class="nav-link" href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- top navigation for mobile end-->
+
+
+           <!--left navigation start-->
+    <div class="navigation">
+        <div class="logo">
+            <a href="#">
+                <span><img src="images/allstateVR.png" alt="logo" class="img-fluid"> </span>
+            </a>
+        </div>
+       
+        <ul class="navbar-nav">
+
+            <li class="list active">
+                <b></b>
+                <b></b>
+                <a href="#" class="nav-link">
+                    <span class="icon"> <i class="bi bi-speedometer2"></i> </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+
+            <li class="list nav-item">
+                <b></b>
+                <b></b>
+                <a class="nav-link" href="#">
+                    <span class="icon"> <i class="bi bi-columns-gap"></i></span>
+                    <span class="title">Master</span>
+                    <span class="aro">&rsaquo;</span>
+                </a>
+                <ul class="dro dro5">
+                   <li  ><a ui-sref="main.tagUpload" class="nav-link" > <i class="  mdi mdi-remote"></i>Tag Upload</a></li>
+                                   <li  ><a ui-sref="main.asset" class="nav-link" > <i class="  mdi  mdi-cart"></i>Asset </a></li>
+                                   <li  ><a ui-sref="main.employee" class="nav-link">  <i class="fa fa-users"></i>Employee</a></li>
+                                   <li  ><a ui-sref="main.device" class="nav-link">  <i class=" mdi mdi-access-point-network-off"></i>Device</a></li>
+                                   <li  ><a ui-sref="main.mailManger" class="nav-link">  <i class=" mdi mdi-access-point-network-off "></i>Mail Manger</a></li>
+                </ul>
+            </li>
+
+            <li class="list nav-item">
+                <b></b>
+                <b></b>
+
+                <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <span class="icon"> <i class="bi bi-receipt"></i></span>
+                    <span class="title">Transaction</span>
+                    <span class="aro">&rsaquo;</span>
+                </a>
+                <ul class="dro dro1">
+                     <li  ><a ui-sref="main.assetEmployeeMapped" class="nav-link" > <i class="  mdi  mdi-cart"></i>Employees Asset </a></li>
+                
+                    <li  ><a ui-sref="main.assetTagMapping" class="nav-link" > <i class="  mdi  mdi-cart"></i>Asset Tag Registration</a></li>
+                   
+                   
+                    <!-- <li><a class="" href="#">Another action</a></li>
+                    <li><a class="" href="#">Something else here</a></li>
+                    <li><a class="" href="#">Separated link</a></li> -->
+                </ul>
+
+            </li>
+
+
+            <!-- <li class="list nav-item">
+                <b></b>
+                <b></b>
+
+                <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <span class="icon"> <i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="title">Gate Pass</span>
+                    <span class="aro">&rsaquo;</span>
+                </a>
+                <ul class="dro dro2">
+                    <li><a class="" href="#">Dashboard</a></li>
+                    <li><a class="" href="#">Another action</a></li>
+                    <li><a class="" href="#">Something else here</a></li>
+                    <li><a class="" href="#">Separated link</a></li>
+                </ul>
+
+            </li>
+
+            <li class="list nav-item">
+                <b></b>
+                <b></b>
+                <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <span class="icon"> <i class="bi bi-file-earmark-ruled"></i></span>
+                    <span class="title">BYOD</span>
+                    <span class="aro">&rsaquo;</span>
+                </a>
+                <ul class="dro dro3">
+                    <li><a class="" href="#">Dashboard</a></li>
+                    <li><a class="" href="#">Another action</a></li>
+                    <li><a class="" href="#">Something else here</a></li>
+                    <li><a class="" href="#">Separated link</a></li>
+                </ul>
+            </li>
+ -->
+            <li class="list nav-item">
+                <b></b>
+                <b></b>
+                <a class="nav-link" href="#">
+                    <span class="icon"><i class="bi bi-journal-bookmark-fill"></i></span>
+                    <span class="title">Report</span>
+                    <span class="aro">&rsaquo;</span>
+                </a>
+                <ul class="dro dro4">
+                  <!--   <li><a class="" href="#">Dashboard</a></li>
+                    <li><a class="" href="#">Another action</a></li>
+                    <li><a class="" href="#">Something else here</a></li>
+                    <li><a class="" href="#">Separated link</a></li> -->
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+
+    <!--left navigation end-->
+    
+    <!-- user bar start -->
+    <nav class="navbar user-nav">
+        <div class="container-fluid user-profile">
+            <div class="d-flex">
+                <div id="navtoggle">
+                    <i class="bi bi-border-width closee" onclick="navtogg();"></i>
+                </div>
+                <div class="d-flex">
+                   
+                    <input class="me-2"  type="search" placeholder="Search" aria-label="Search" ng-model="vm.selecteAsset" name="search" uib-typeahead="asset as asset.assetType+' '+asset.serialNo+' '+asset.assetId+' '+asset.make+' '+asset.model+' '+asset.tagCode for asset in vm.allAssets | filter:$viewValue | limitTo:20" typeahead-no-results="codes" required
+																		  typeahead-on-select="vm.search(vm.selecteAsset)" />
+                    <i class="bi bi-search"></i>
+                </div>
+
+            </div>
+            <div style="margin-left: auto;">
+              <a ui-sref="main.notification"> 
+	              <i class="bi bi-bell-fill"> 
+	            	  <span ng-if="notificationCount!=0" class="badge">{{notificationCount}} </span>
+	              </i>
+           </a> 
+            </div>
+            <div class="user-drop">
+
+                <div class="user-pic" onclick="userprofile();">
+                    <img src="images/users/avatar-1.jpg" alt="userImage">
+                </div>
+
+                <div class="user-menu">
+                    <h3>
+                        {{vm.user.firstName}} {{vm.user.lastName}} <br>
+                        <span>{{vm.user.role.roleName}}</span>
+                    </h3>
+                    <ul>
+                        <li><a href="#"><i class="bi bi-person-check-fill"></i>proflie</a></li>
+                        <li><a href="#"><i class="bi bi-pencil-fill"></i>edit proflie</a></li>
+                        <li><a href="#"><i class="bi bi-gear-fill"></i>setting</a></li>
+                        <li><a href="" ng-click="vm.doLogout()"><i class="bi bi-box-arrow-left"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- user bar end -->
+    
+<div class="home_page">
+
+
+<div ui-view="sub" style="
+    background-color: white;
+"></div>
+
+    </div>
+
+
+
+        </div>
+        
+       
+     

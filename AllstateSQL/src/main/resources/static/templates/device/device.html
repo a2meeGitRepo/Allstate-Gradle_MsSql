@@ -1,0 +1,153 @@
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="Device">
+            
+           
+			
+           
+            <!-- Add New Form Start  -->
+ 				<div class="material mt-5" ng-show="addNew">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Device</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                        	 <label for="inputState" class="col-form-label">Device Type</label> <i style="color:red">*</i>
+						                                               <select class="form-control"
+																			ng-model="vm.device.deviceType"
+																					style="height: calc(2.25rem + 14px)" required>
+																			<option value="" disabled selected>Select Device Type </option>
+																			<option value="RF READER"  >RF READER </option>
+																			
+																		</select>
+																		<span ng-show="deviceTypeErr" style="color:red">  * Device type is mandatory</span>
+                        </div>
+                         <div class="col-md-6">
+                             <label for="inputState" class="col-form-label">Location Name</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="locationName" ng-model="vm.device.locationName"  placeholder="Enter Device name">
+						                                           		<span ng-show="locationNameErr" style="color:red">  * Location Name is mandatory</span>
+						                                           
+                        </div>
+                        <div class="col-md-6">
+                             <label for="inputState" class="col-form-label">Device Name</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="deviceName" ng-model="vm.device.deviceName"  placeholder="Enter Device name">
+						                                           		<span ng-show="deviceNameErr" style="color:red">  * Device Name is mandatory</span>
+						                                           
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputState" class="col-form-label">Device MAC Id</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="macId" ng-model="vm.device.macId"  placeholder="Enter Device MAC Id">
+						                                           <span ng-show="macErr" style="color:red">  * MAC Id is mandatory</span>
+                      
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputState" class="col-form-label">Antenna No</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="antenaNo" ng-model="vm.device.antenaNo"  placeholder="Enter Antena No ">
+						                                           <span ng-show="antenaNoErr" style="color:red">  * Antenna No is mandatory</span>
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                           
+                           
+                            <label for="inputState" class="col-form-label">Device Configuration</label> 
+						                                                <textarea class="form-control" id="configuration" ng-model="vm.device.configuration"  placeholder="Enter Device Configuration"></textarea>
+						                                           
+                        </div>
+                        
+                       
+                        
+                       
+                        
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.save(vm.device)">Submit</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Add New Form End   -->
+			<!-- List View Star -->
+                <div class="material mt-5" >
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <form class="d-flex search">
+                                <input class="me-2" type="search" placeholder="Search" aria-label="Search" ng-model="vm.serachText">
+                                <button class="searchBtn" type="submit"  ng-click="vm.loadAssets()">Search</button>
+                            </form>
+                        </div>
+                          <div class="col-2 text-center">
+                          
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" ng-change="vm.loadAssets()"   >
+                          </div>
+                         
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Add New Device"style="margin-left: 128px;" ng-click="vm.add()">   <i class="bi bi-plus-square" ></i></button>
+                        </div>
+                      
+                    </div>
+                </div>
+                    <div class="material-tbl mt-3">
+                        <table id="datatable-buttons" class="text-center align-middle justify-content-center table-striped"
+                            >
+                            <thead>
+                                <tr>
+                                     <th class="text-center">Sr No</th>
+                                              <th class="text-center">Device Type</th>
+                                                <th class="text-center">Location Name</th>
+                                            <th class="text-center">Device Name</th>
+                                            <th class="text-center">MAC Id</th>
+                                              <th class="text-center">Antenna  No</th>
+                                            <th class="text-center">Added By</th>
+                                            <th class="text-center">Added Date</th>
+                                            
+                                             <th class="text-center">Status</th>
+                                         
+                                           
+                                           <th>Action</th> 
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-show="vm.devices.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="device in vm.devices| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                            <td class="text-center">{{device.deviceType}}</td>
+                                           <td class="text-center">{{device.locationName}}</td>
+                                             <td class="text-center">{{device.deviceName}}</td>
+                                                <td class="text-center">{{device.macId}}</td>
+                                                 <td class="text-center">{{device.antenaNo}}</td>
+                                            <td class="text-center">{{device.addedBy.firstName}}-{{device.addedBy.lastName}}</td>
+                                              <td class="text-center">{{device.addedDate|date:'dd-MM-yyyy'}}</td>
+                                             <td class="text-center">
+                                                 
+                                                 <button style="width:100px" ng-class="device.active==1? 'btn btn-rounded btn-success':'btn btn-rounded btn-warning'">
+                                            		   <span ng-if="device.active==1"> Active</span><span ng-if="device.active==0"> InActive</span>
+                                            		</button>
+                                                 
+                                             </td>
+                                                                          
+                                            <td class="text-center">
+                                               
+                                               <i class="bi bi-pencil-square" title="Edit" ng-click="vm.edit(device)"></i>
+                                              <i class="bi bi-trash" title="Delet" ng-click="vm.delet(device)"></i>
+                                              
+                                            
+                                         </td>
+                                           
+                                        </tr>
+                               
+                            </tbody>
+                        </table>
+                  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+
+                    </div>
+                </div>
+		<!-- List View Star -->
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>

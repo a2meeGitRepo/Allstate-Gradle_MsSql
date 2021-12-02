@@ -1,0 +1,558 @@
+
+
+    <div style="margin: 10px;">
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab index="0" heading="BLE Zones">
+                <div class="container-fluid mt-4">
+                    <div class="row">
+                        <legend class="dotted" style="color: #616060;"><b>BLE ZONEs</b></legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">BLE Zone 1</div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"></h5>
+                                    <h3 class="card-text text-end"> 12 </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">BLE Zone 2</div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"></h5>
+                                    <h3 class="card-text text-end"> 65 </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">BLE Zone 3</div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"> </h5>
+                                    <h3 class="card-text text-end"> 78 </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">BLE Zone 4</div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"> </h5>
+                                    <h3 class="card-text text-end"> 78 </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <a href="#">
+                            <h6>view all BLE Zones</h6>
+                        </a>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- BLE chart start -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <legend class="dotted" style="color: #616060;"><b>Chart</b></legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart2" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart3" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <a href="#">
+                            <h6>view more charts</h6>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- BLE chart end -->
+
+                <!-- BLE table end-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <legend class="dotted" style="color: #616060;"><b>Out Of Zone Fixed Asset List</b></legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 ble_table">
+                            <table class="text-center table-striped  align-middle justify-content-center"
+                                style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Category</th>
+                                        <th>Brand</th>
+                                        <th>Asset</th>
+                                        <th>MAC Id</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>computer</td>
+                                        <td>hp</td>
+                                        <td>2</td>
+                                        <td>6465465464565</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>computer</td>
+                                        <td>hp</td>
+                                        <td>2</td>
+                                        <td>6465465464565</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>computer</td>
+                                        <td>hp</td>
+                                        <td>2</td>
+                                        <td>6465465464565</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>computer</td>
+                                        <td>hp</td>
+                                        <td>2</td>
+                                        <td>6465465464565</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <a href="#">
+                            <h6>view full table</h6>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <!-- BLE table end-->
+
+                <!--  notification -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <legend class="dotted" style="color: #616060;"><b>Notification</b></legend>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-3.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-4.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-5.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-2.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <div class="col-12">
+                            <a href="#">
+                                <h6>view more</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+
+
+            <!-- RFID Zone start -->
+            <uib-tab index="1" heading="RFID ZONEs">
+                <div class="container-fluid mt-4">
+                    <div class="row">
+                        <legend class="dotted" style="color: #616060;"><b>RFID ZONEs</b></legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">Register Asset </div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"></h5>
+                                    <h3 class="card-text text-end"> {{vm.registerAssetCount}} </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">UnRegister Asset </div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"></h5>
+                                    <h3 class="card-text text-end"> {{vm.unRegisterAssetCount}} </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">Allocated Asset </div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"> </h5>
+                                    <h3 class="card-text text-end"> {{vm.allocatedAssetCount}} </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card mb-3 dash-card">
+                                <div class="card-header">UnAllocated Asset </div>
+                                <div class="card-body">
+                                    <h5 class="card-text card-title"> </h5>
+                                    <h3 class="card-text text-end"> {{vm.unAllocatedAssetCount}} </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <a href="#">
+                            <h6>view all RFID Zones</h6>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+
+
+                <!-- chart start -->
+              <!--   <div class="container-fluid mt-4">
+                    <div class="row">
+                        <legend class="dotted" style="color: #616060;"><b>Chart</b></legend>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart4" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart5" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card chart">
+                                <div class="card-body">
+                                    <canvas id="dash_chart6" aria-label="chaet" role="img"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-end">
+                        <a href="#">
+                            <h6>view more charts</h6>
+                        </a>
+                    </div>
+                </div> -->
+                <!-- chart end -->
+                <hr>
+
+                <!--  notification -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <legend class="dotted" style="color: #616060;"><b>Notification</b></legend>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center" ng-repeat="notification in vm.notifications">
+                        <div class="col-12 col-sm-12 dash_notification">
+                            <img src="assets/images/bell.jpg" alt="user2">
+                            <P style="margin-left: 10px;">{{notification.messsge}}</P>
+                            <button class="save" style="margin-left: auto;"> <i class="bi bi-eye-fill" ng-click="viewNotification(notification)"></i></button>
+                        </div>
+                    </div>
+                   <!--  <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-4.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-5.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 dash_notification">
+                            <img src="../images/users/avatar-2.jpg" alt="user2">
+                            <P style="margin-left: 10px;">john dev send you message</P>
+                            <button class="save" style="margin-left: auto;"> view message</button>
+                        </div>
+                    </div> -->
+                    <div class="row text-end">
+                        <div class="col-12">
+                            <a href="#">
+                                <h6>view more</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+
+            <!-- Asset start -->
+            <uib-tab index="2" heading="Asset">
+                <div class="container-fluid  mt-4">
+
+                    <div class="row">
+                        <div class="col-6 ml-3">
+                            <legend class="dotted" style="color: #616060;"><b>ASSET</b></legend>
+                        </div>
+                        <div class="col-6 text-end">
+                            <input type="button" class="save mb-3" onclick="tog();" value="Graphical / Numeric"
+                                id="togl">
+                        </div>
+                    </div>
+
+                    <!-- chart start -->
+                    <div id="assect_chart">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart7" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart8" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart9" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart10" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart11" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart12" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <select class="form-select dasselect" style="width: 100%;">
+                                            <option selected>Select Engineer</option>
+                                            <option>Java Developer</option>
+                                            <option>C# Developer</option>
+                                            <option>Python Developer</option>
+                                            <option>.Net</option>
+                                            <option>other</option>
+                                        </select>
+                                        <P style="margin-top: 10px; margin-bottom: 0px; color: #616060;">Closed
+                                            Complaints
+                                        </P>
+                                        <progress max="100" min="0" value="20" class="progr"></progress><br>
+                                        <P style="margin-top: 10px; margin-bottom: 0px; color: #616060;">Closed
+                                            Complaints
+                                        </P>
+                                        <progress max="100" min="0" value="40" class="progr"></progress><br>
+                                        <P style="margin-top: 10px; margin-bottom: 0px; color: #616060;">Closed
+                                            Complaints
+                                        </P>
+                                        <progress max="100" min="0" value="60" class="progr"></progress><br>
+                                        <P style="margin-top: 10px; margin-bottom: 0px; color: #616060;">Closed
+                                            Complaints
+                                        </P>
+                                        <progress max="100" min="0" value="80" class="progr"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6 mb-4">
+                                <div class="card chart">
+                                    <div class="card-body">
+                                        <canvas id="dash_chart13" aria-label="chaet" role="img"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- chart end -->
+
+
+                <div id="assect_num" style="display: none;">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-archive-fill"
+                                            style="font-size: 2em;"></i></div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total Assets
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center">
+                                        <i class="bi bi-people-fill" style="font-size: 2em;"></i>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total Employees
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-bug-fill"
+                                            style="font-size: 2em;"></i>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total Open Complaints
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-calendar-check-fill"
+                                            style="font-size: 2em;"></i></div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total Close Complaints
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-file-earmark-check"
+                                            style="font-size: 2em;"></i></div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total GRN
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-file-earmark-person"
+                                            style="font-size: 2em;"></i></div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total GatePass Count
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-layers-half"
+                                            style="font-size: 2em;"></i></div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total Pending GatePass
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card mb-3 dash-card">
+                                    <div class="card-header text-center"><i class="bi bi-laptop"
+                                            style="font-size: 2em;"></i>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h2 class="card-text card-title"> 78 </h2>
+                                    </div>
+                                    <div class="card-footer text-center" style="font-size: 16px;">
+                                        Total BYOD
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>

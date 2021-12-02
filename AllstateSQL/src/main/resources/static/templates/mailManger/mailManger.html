@@ -1,0 +1,244 @@
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="Email">
+          <!-- Receiver Start  -->
+ 				<div class="material mt-5" ng-show="addNewRecieverTab">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Email Receiver Details </b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        
+                       
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Name<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="name" ng-model="vm.email.name" placeholder="Enter Name">
+                      	   <span style="color:red" ng-show="nameErr"> Name is Mandatory</span>
+                      	
+                      
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Email Id<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="emailId" ng-model="vm.email.emailId" placeholder="Enter Email Id">
+                       	<span style="color:red" ng-show="emailIdErr">Email Id  is Mandatory</span>
+                       	
+                       
+                        </div>
+                        
+                        
+                       
+                        
+                       
+                        
+                      
+                        
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.saveNewReciever(vm.email)">Submit</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Receiver End   -->
+            <!-- Add New Form Start  -->
+ 				<div class="material mt-5" ng-show="addNewTab">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Email Sender Details </b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        
+                       
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Host Name<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="host" ng-model="vm.email.host" placeholder="Enter Host Name">
+                      	   <span style="color:red" ng-show="hostErr">Host Name is Mandatory</span>
+                      	
+                      
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Port<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="port" ng-model="vm.email.port" placeholder="Enter Port">
+                       	<span style="color:red" ng-show="portErr">Port  is Mandatory</span>
+                       	
+                       
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">User Name <sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="userName" ng-model="vm.email.userName" placeholder="Enter User Name">
+								<span style="color:red" ng-show="userNameErr">User Name  is Mandatory</span>
+                       
+                       
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">From Mail <sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="fromMail" ng-model="vm.email.fromMail" placeholder="Enter From Mail">
+                       <span style="color:red" ng-show="fromMailErr">From Mail  is Mandatory</span>
+                       
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Password<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="password" ng-model="vm.email.password" placeholder="Enter Password" >
+                       
+                       <span style="color:red" ng-show="passwordErr">Password  is Mandatory</span>
+                        </div>
+                        
+                      
+                        
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.save(vm.email)">Submit</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Add New Form End   -->
+			
+			 <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b> Email 	Receiver  Details </b>
+                    </legend>
+                    <hr>
+			<!-- List View Star -->
+                <div class="material mt-5" >
+                    <div class="container-fluid">
+                    <div class="row">
+                       
+                          
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Add Receiver"style="margin-left: 128px;" ng-click="vm.addNewReciever()">   <i class="bi bi-plus-square" ></i></button>
+                        </div>
+                      
+                    </div>
+                </div>
+                    <div class="material-tbl mt-3">
+                        <table id="datatable-buttons" class="text-center align-middle justify-content-center table-striped"
+                            >
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                     <th>Name</th>
+                                    <th>Email Id</th>
+                                  
+                                  
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                             <tr ng-show="vm.emailReceivers.length <= 0"><td colspan="8" style="text-align:center;color:#5D6D7E;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Data Not Found!!
+							<tr dir-paginate="emailReceiver in vm.emailReceivers| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                        
+                                
+                                    <th>{{$index+1}}</th>
+                                    <td>{{emailReceiver.name}}</td>
+                                    <td>{{emailReceiver.emailId}}</td>
+                                  
+                                      <td> 
+                                      <button ng-if="emailReceiver.active==1" class="save" type="submit" title="Active"> Active</button>
+                                        <button ng-if="emailReceiver.active!=1"  class="cancleBtn" type="submit" title="In Active">In  Active</button>
+                                       
+                                       </td>
+                                    <td>
+                                       <i class="bi bi-pencil-square" ng-click="vm.editEmailReceiver(emailReceiver)"style="margin-right: 10px;"></i>
+                                 	  	<i class="bi bi-arrow-counterclockwise" ng-click="vm.changeStatutsemailReceiver(emailReceiver)"></i>
+                                   	
+                                   
+                                   
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+
+                    </div>
+                </div>
+		<!-- List View Star -->
+		
+		
+		 <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b> Email Sender Details </b>
+                    </legend>
+                    <hr>
+		
+	<!-- List View Star -->
+                <div class="material mt-5">
+                    <div class="container-fluid">
+                    <div class="row">
+                       
+                          
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Add New Asset"style="margin-left: 128px;" ng-click="vm.addNew()">   <i class="bi bi-plus-square" ></i></button>
+                        </div>
+                      
+                    </div>
+                </div>
+                    <div class="material-tbl mt-3">
+                        <table id="datatable-buttons" class="text-center align-middle justify-content-center table-striped"
+                           >
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                     <th>Host</th>
+                                    <th>Port</th>
+                                    <th>User Name</th>
+                                    <th>From Mail</th>
+                                    <th>Password</th>
+                                    <th>Signature</th>
+                                  
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                             <tr ng-show="vm.emailSenders.length <= 0"><td colspan="8" style="text-align:center;color:#5D6D7E;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Data Not Found!!
+							<tr dir-paginate="emailSender in vm.emailSenders| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                        
+                                
+                                    <th>{{$index+1}}</th>
+                                    <td>{{emailSender.host}}</td>
+                                    <td>{{emailSender.port}}</td>
+                                    <td>{{emailSender.userName}}</td>
+                                    <td>{{emailSender.fromMail}}</td>
+                                    <td>{{emailSender.password}}</td>
+                                    <td>{{emailSender.signiture}}</td>
+                                    <td>{{emailSender.addedDate|date:'dd-MM-yyyy'}}</td>
+                                 
+
+                                       <td>{{emailSender.active}}
+                                       
+                                      <button ng-if="emailSender.active==1" class="save" type="submit" title="Active"> Active</button>
+                                        <button ng-if="emailSender.active!=1"  class="cancleBtn" type="submit" title="In Active">In  Active</button>
+                                       
+                                       </td>
+                                    <td>
+                                       <i class="bi bi-pencil-square" ng-click="vm.editEmailSender(emailSender)"style="margin-right: 10px;"></i>
+                                 	  	<i class="bi bi-arrow-counterclockwise" ng-click="vm.changeStatuts(emailSender)"></i>
+                                   	
+                                   
+                                   
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+
+                    </div>
+                </div>
+		<!-- List View Star -->		
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>

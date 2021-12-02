@@ -1,0 +1,367 @@
+
+    <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">SMS And Email Detials  </h4>
+
+                                   <ol class="breadcrumb float-right">
+<!--                                   		<li class="breadcrumb-item active"><button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Add SMS Detials" ng-click="vm.addSMS()">Add SMS Details </button></li>
+ -->                                  		
+                                  		<li class="breadcrumb-item active"><button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Add Email Detials" ng-click="vm.addEmail()">Add Email Details </button></li>
+                                    </ol>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                       
+                          <!-- start add  row -->
+                          <div class="row" ng-show="addNewSMS">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    
+
+                                   				 <div class="row">
+						                            <div class="col-md-12">
+						                                <div class="card-box">
+						                                    <h4 class="m-t-0 header-title">Register new SMS Detials</h4>
+						                                   
+						
+						                                    <form>
+						                                     	
+						                               <div class="form-row">
+						                                            <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">URL</label> 
+						                                                <input type="text"  class="form-control" id="url" ng-model="smsDetial.url"  placeholder="Enter Url">  
+						                                                <span ng-show="urlErr" style="color:red">  * Url is mandatory</span>
+
+						                                            </div>            
+						                                            <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">User Name </label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="userName" ng-model="smsDetial.useName"  placeholder="Enter User Name">
+						                                           		<span ng-show="userNameErr" style="color:red">  * User Name is mandatory</span>
+						                                           
+						                                            </div>
+						                                            
+						                                            
+						                                        </div>
+						                                        
+						                                        <div class="row">
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Password</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="password" ng-model="smsDetial.password"  placeholder="Enter Password">
+						                                           <span ng-show="passwordErr" style="color:red">  * Password is mandatory</span>
+						                                            </div>
+						                                        	<div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Sender Id</label> 
+						                                                <input type="text"  class="form-control" id="senderId" ng-model="smsDetial.senderId"  placeholder="Enter Sender Id">
+						                                                <span ng-show="senderIdErr" style="color:red">  * Sender Id is mandatory</span>
+
+						                                            </div>
+						                                            
+		
+						                                        
+						                                        </div>
+						                                        
+						                                       <div class="row">
+						                                        
+						                                         <div class="form-group col-md-2">
+						                                         	 <button type="button" class="btn btn-success waves-effect w-md waves-light" type="submit" ng-click="vm.saveSMS(smsDetial)" ng-disabled="disabledClick">Save</button>
+						                                         
+						                                         </div>
+						                                         <div class="form-group col-md-4">
+						                                         		   <button type="button" class="btn btn-danger waves-effect w-md waves-light" ng-click="vm.cancle()">Cancel</button>
+						                                          </div>
+						                                       
+						                                        </div>
+						                                       
+						                                    </form>
+						                                </div>
+						                            </div>
+						                        </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- end add row -->
+
+        <!-- start add  row -->
+                          <div class="row" ng-show="addNewEmail">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    
+
+                                   				 <div class="row">
+						                            <div class="col-md-12">
+						                                <div class="card-box">
+						                                    <h4 class="m-t-0 header-title">Register new Email Details</h4>
+						                                   
+						
+						                                    <form>
+						                                     	
+						                               <div class="form-row">
+						                                             <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Sender  Mail</label> <i style="color:red">*</i>
+						                                              <input type="text" class="form-control" id="fromMail" ng-model="emailSender.fromMail"  placeholder="Enter from mail ">
+
+																		<span ng-show="fromMailErr" style="color:red">  * From Mail   is mandatory</span>
+						                                            </div>
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Password</label> <i style="color:red">*</i>
+						                                                <input type="password" class="form-control" id="password" ng-model="emailSender.password"  placeholder="Enter Password">
+						                                           		<span ng-show="passwordErr" style="color:red">  * Password is mandatory</span>
+						                                           
+						                                            </div>
+						                                            
+						                                        </div>
+						                                        <div class="form-row">
+						                                        <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Host Name</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="emailSender" ng-model="emailSender.host"  placeholder="Enter Host Name">
+						                                           <span ng-show="hostErr" style="color:red">  * Host Name is mandatory</span>
+						                                            </div>
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">User Name</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="userName" ng-model="emailSender.userName"  placeholder="Enter User Name">
+						                                           <span ng-show="userNameErr" style="color:red">  * User Name is mandatory</span>
+						                                            </div>
+						                                            
+						                                        </div>
+						                                        <div class="row">
+						                                        	<div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Port</label> 
+						                                                <input type="text"  class="form-control" id="port" ng-model="emailSender.port"  placeholder="Enter Port">
+						                                                <span ng-show="portErr" style="color:red">  * Port  is mandatory</span>
+
+						                                            </div>
+						                                            
+						                                            <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Signature</label> 
+						                                                <input type="text"  class="form-control" id="signiture" ng-model="emailSender.signiture"  placeholder="Enter Signature">  
+						                                                <span ng-show="signitureErr" style="color:red">  * Signature is mandatory</span>
+
+						                                            </div>
+						                                          <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Recipient </label> 
+						                                                <input type="text"  class="form-control" id="toMai" ng-model="emailSender.toMail"  placeholder="Enter To mail">  
+						                                                <span ng-show="toMailErr" style="color:red">  * To Mail is mandatory</span>
+
+						                                            </div>
+						                                            <!--   <div class="form-group col-md-2">
+						                                                <label for="inputState" class="col-form-label">Recipient 2</label> 
+						                                                <input type="text"  class="form-control" id="toMai" ng-model="emailSender.toMail3"  placeholder="Enter To mail">  
+						                                                <span ng-show="toMailErr" style="color:red">  * To Mail is mandatory</span>
+
+						                                            </div>
+						                                              <div class="form-group col-md-2">
+						                                                <label for="inputState" class="col-form-label">Recipient 2</label> 
+						                                                <input type="text"  class="form-control" id="toMai" ng-model="emailSender.toMail"  placeholder="Enter To mail">  
+						                                                <span ng-show="toMailErr" style="color:red">  * To Mail is mandatory</span>
+
+						                                            </div> -->
+						                                        </div>
+						                                        
+						                                       <div class="row">
+						                                        
+						                                         <div class="form-group col-md-2">
+						                                         	 <button type="button" class="btn btn-success waves-effect w-md waves-light" type="submit" ng-click="vm.saveEmail(emailSender)" ng-disabled="disabledClick">Save</button>
+						                                         
+						                                         </div>
+						                                         <div class="form-group col-md-4">
+						                                         		   <button type="button" class="btn btn-danger waves-effect w-md waves-light" ng-click="vm.cancle()">Cancel</button>
+						                                          </div>
+						                                       
+						                                        </div>
+						                                       
+						                                    </form>
+						                                </div>
+						                            </div>
+						                        </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- end add row -->
+<!-- 
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                  <h4 class="m-t-0 header-title"><b>SMS Sender List</b></h4>
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Sr No</th>
+                                              <th class="text-center">URL</th>
+                                            <th class="text-center">User Name</th>
+                                            <th class="text-center">Password</th>
+                                             <th class="text-center">Sender Id</th>
+                                            <th class="text-center">Added By</th>
+                                            <th class="text-center">Added Date</th>
+                                            
+                                             <th class="text-center">Status</th>
+                                         
+                                           	
+                                           <th>Action</th> 
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr ng-show="vm.smsDetials.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="smsDetial in vm.smsDetials| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                           
+                                             <td class="text-center">{{smsDetial.url}}</td>
+                                                <td class="text-center">{{smsDetial.userName}}</td>
+                                                  <td class="text-center">{{smsDetial.password}}</td>
+                                                  <td class="text-center">{{smsDetial.senderId}}</td>
+                                            <td class="text-center">{{smsDetial.addedBy}}</td>
+                                              <td class="text-center">{{smsDetial.addedDate|date:'dd-MM-yyyy'}}</td>
+                                             <td class="text-center">
+                                                 
+                                                 <button style="width:100px" ng-class="smsDetial.active==1? 'btn btn-rounded btn-success':'btn btn-rounded btn-warning'">
+                                            		   <span ng-if="smsDetial.active==1"> Active</span><span ng-if="smsDetial.active==0"> InActive</span>
+                                            		</button>
+                                                 
+                                             </td>
+                                                                       
+                                            <td class="text-center">
+                                            	<button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Change Status" ng-click="vm.changeStatusSMS(smsDetial)">Change Status</button>
+                                               <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Edit" ng-click="vm.editSMS(smsDetial)">Edit</button>
+                                              <button type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Delet" ng-click="vm.deletSMS(smsDetial)">Delete</button>
+                                            
+                                         </td>
+                                           
+                                        </tr>
+                                      
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- end row -->
+
+
+
+
+
+
+
+
+
+  <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                  <h4 class="m-t-0 header-title"><b>Email Sender List</b></h4>
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Sr No</th>
+                                              <th class="text-center">Sender Mail</th>
+                                            <th class="text-center">Recipient</th>
+                                            <th class="text-center">User Name</th>
+                                             <th class="text-center">Port</th>
+                                              <th class="text-center">Host</th>
+                                                <th class="text-center">Signature</th>
+                                            <th class="text-center">Added By</th>
+                                            <th class="text-center">Added Date</th>
+                                            
+                                             <th class="text-center">Status</th>
+                                         
+                                           	
+                                           <th>Action</th> 
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr ng-show="vm.emailDetials.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="emailDetial in vm.emailDetials| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                           
+                                             <td class="text-center">{{emailDetial.fromMail}}</td>
+                                                <td class="text-center">{{emailDetial.toMail}}</td>
+                                                  <td class="text-center">{{emailDetial.userName}}</td>
+                                                  <td class="text-center">{{emailDetial.port}}</td>
+                                                  <td class="text-center">{{emailDetial.host}}</td>
+                                                   <td class="text-center">{{emailDetial.signiture}}</td>
+                                            <td class="text-center">{{emailDetial.addedBy}}</td>
+                                              <td class="text-center">{{emailDetial.addedDate|date:'dd-MM-yyyy'}}</td>
+                                             <td class="text-center">
+                                                 
+                                                 <button style="width:100px" ng-class="emailDetial.active==1? 'btn btn-rounded btn-success':'btn btn-rounded btn-warning'">
+                                            		   <span ng-if="emailDetial.active==1"> Active</span><span ng-if="emailDetial.active==0"> InActive</span>
+                                            		</button>
+                                                 
+                                             </td>
+                                                                       
+                                            <td class="text-center">
+                                            	<button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Change Status" ng-click="vm.changeStatusEmail(emailDetial)">Change Status</button>
+                                               <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Edit" ng-click="vm.editEmail(emailDetial)">Edit</button>
+                                              <button type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Delet" ng-click="vm.deletEmail(emailDetial)">Delete</button>
+                                            
+                                         </td>
+                                           
+                                        </tr>
+                                      
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+
+
+
+
+
+
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+              
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+</div>
+
+
+  <!-- Required datatable js -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <script src="plugins/datatables/buttons.colVis.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>

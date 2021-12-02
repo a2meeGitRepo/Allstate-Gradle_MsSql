@@ -1,0 +1,262 @@
+
+    <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">Device  </h4>
+
+                                   <ol class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active"><button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Add New User" ng-click="vm.add()">Add New </button></li>
+                                    </ol>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                       
+                          <!-- start add  row -->
+                          <div class="row" ng-show="addNew">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    
+
+                                   				 <div class="row">
+						                            <div class="col-md-12">
+						                                <div class="card-box">
+						                                    <h4 class="m-t-0 header-title">Zone Mapping</h4>
+						                                   
+						
+						                                    <form>
+						                                     	
+						                               <div class="form-row">
+						                                             <div class="form-group col-md-4">
+						                                                <label for="inputState" class="col-form-label">Zone</label> <i style="color:red">*</i>
+						                                              <select class="form-control"
+																			ng-model="zoneMapping.zone"   ng-change="vm.loadAssingedDevice(zoneMapping.zone);"
+																			ng-options="zone as zone.zoneName +'-'+zone.zoneLocation +'-'+zone.zoneId  for zone in vm.zones"
+																					style="height: calc(2.25rem + 14px)" required>
+																			<option value="" disabled selected>Select Zone </option>
+																			
+																		</select>
+																		<span ng-show="zoneErr" style="color:red">  * Zone is mandatory</span>
+						                                            </div>
+						                                        
+						                                             
+						                                            
+						                                        </div>
+						                                        
+						                                        <div class="row">
+						                                         <div class="form-group col-md-5">
+						                                            <label for="inputState" class="col-form-label">Assigned Device </label> 
+						                                        			 <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+											                                        <thead>
+											                                        <tr style="background-color: #57d4a6;">
+											                                            <th class="text-center">Sr No</th>
+											                                              <th class="text-center">Device Type</th>
+											                                            <th class="text-center">Device Name</th>
+											                                            <th class="text-center">MAC Id</th>
+											                                              <th class="text-center">Antenna No</th>
+											                                          
+											                                         
+											                                           
+											                                           <th>Action</th> 
+											                                        </tr>
+											                                        </thead>
+											
+											
+											                                        <tbody>
+											                                        <tr ng-show="vm.assingedDevies.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+																					<tr dir-paginate="assingedDevice in vm.assingedDevies| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																		
+											                                           <td class="text-center">{{$index+1}}</td>
+											                                             <td class="text-center"> <span ng-if="assingedDevice.device.deviceType==1">RFID Reader</span><span ng-if="assingedDevice.device.deviceType==2">BLE Reader</span><span ng-if="assingedDevice.device.deviceType==3">ATTENDANCE DEVICE</span></td>
+											                                           
+											                                             <td class="text-center">{{assingedDevice.device.deviceName}}</td>
+											                                                <td class="text-center">{{assingedDevice.device.macId}}</td> 
+											                                                  <td class="text-center">{{assingedDevice.device.antenaNo}}</td>
+											                                           
+											                                                                     
+											                                            <td>
+											                                            
+											                                            <button type="button" class="btn btn-danger btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Remove" ng-click="vm.remove(assingedDevice)">Remove</button>
+											                                            
+											                                            </td>
+											                                           
+											                                        </tr>
+											                                      
+											                                        </tbody>
+                                   											 </table>
+                                   											 </div>
+                                   											 
+                                   											  <div class="form-group col-md-1">
+                                   											  </div>
+                                   											 
+                                   											 
+                                   											 
+                                   											  <div class="form-group col-md-5">
+                                   											   <label for="inputState" class="col-form-label">Available Device </label> 
+						                                        			 	<table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+											                                        <thead>
+											                                        <tr style="background-color: #57d4a6;">
+											                                            <th class="text-center">Sr No</th>
+											                                              <th class="text-center">Device Type</th>
+											                                            <th class="text-center">Device Name</th>
+											                                            <th class="text-center">MAC Id</th>
+											                                            <th class="text-center">Antenna No</th>
+											                                          
+											                                         
+											                                           
+											                                           <th> <!-- <input class="c_check" type="checkbox"
+																								ng-model="vm.selectAllChk"
+																								ng-click="selectAllTable()"> -->
+																						</th> 
+											                                        </tr>
+											                                        </thead>
+											
+											
+											                                        <tbody>
+											                                        <tr ng-show="vm.availableDevie.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+																					<tr dir-paginate="device in vm.availableDevie| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																		
+											                                           <td class="text-center">{{$index+1}}</td>
+											                                            <td class="text-center"><span ng-if="device.deviceType==1">RFID Reader</span><span ng-if="device.deviceType==2">BLE Reader</span><span ng-if="device.deviceType==3">ATTENDANCE DEVICE</span></td>
+											                                           
+											                                             <td class="text-center">{{device.deviceName}}</td>
+											                                                <td class="text-center">{{device.macId}}</td>
+											                                                 <td class="text-center">{{device.antenaNo}}</td>
+											                                           
+											                                           <td>
+											                                           	<input class="c_check" type="checkbox" ng-checked="arr.check"   ng-click="vm.mappedDevive(device)">
+														</td>
+											                                        </tr>
+											                                      
+											                                        </tbody>
+                                   											 </table>
+                                   											 </div>
+						                                        
+						                                        </div>
+						                                        
+						                                       <div class="row">
+						                                        
+						                                         <!-- <div class="form-group col-md-2">
+						                                         	 <button type="button" class="btn btn-success waves-effect w-md waves-light" type="submit" ng-click="vm.save(device)" ng-disabled="disabledClick">Save</button>
+						                                         
+						                                         </div> -->
+						                                         <div class="form-group col-md-4">
+						                                         		   <button type="button" class="btn btn-danger waves-effect w-md waves-light" ng-click="vm.cancle()">Cancel</button>
+						                                          </div>
+						                                       
+						                                        </div>
+						                                       
+						                                    </form>
+						                                </div>
+						                            </div>
+						                        </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- end add row -->
+
+                        <div class="row" style="margin-bottom:10px">
+								<div class="col-8">
+					              <label for="search">Search:</label>
+					              <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+					            </div>
+					            <div class="col-4 pull-right">
+					              <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage">
+					            </div>
+           				 </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                  <h4 class="m-t-0 header-title"><b>Tag List</b></h4>
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Sr No</th>
+                                             <th class="text-center">Zone Name</th>
+                                            <th class="text-center">Zone Location</th>
+                                            <th class="text-center">Zone Id</th>
+                                              <th class="text-center">Device Type</th>
+                                            <th class="text-center">Device Name</th>
+                                            <th class="text-center">MAC Id</th>
+                                         <th class="text-center">Antenna No</th>
+                                            
+                                            <th class="text-center">Added By</th>
+                                            <th class="text-center">Added Date</th>
+                                            
+                                            
+                                         
+                                           
+                                           <th>Action</th> 
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr ng-show="vm.zonedevices.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="zonedevice in vm.zonedevices| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                           <td class="text-center">{{zonedevice.zone.zoneName}}</td>
+                                           <td class="text-center">{{zonedevice.zone.zoneLocation}}</td>
+                                           <td class="text-center">{{zonedevice.zone.zoneId}}</td>
+                                            <td class="text-center"><span ng-if="zonedevice.device.deviceType==1">RFID Reader</span><span ng-if="zonedevice.device.deviceType==2">BLE Reader</span></td>
+                                           
+                                             <td class="text-center">{{zonedevice.device.deviceName}}</td>
+                                                <td class="text-center">{{zonedevice.device.macId}}</td>
+                                                 <td class="text-center">{{zonedevice.device.antenaNo}}</td>
+                                            <td class="text-center">{{zonedevice.assingedBy.firstName}}-{{device.addedBy.lastName}}</td>
+                                              <td class="text-center">{{zonedevice.assingedDate|date:'dd-MM-yyyy'}}</td>
+                                           
+                                           <td></td>
+                                        </tr>
+                                      
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+              
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+</div>
+
+
+  <!-- Required datatable js -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <script src="plugins/datatables/buttons.colVis.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>

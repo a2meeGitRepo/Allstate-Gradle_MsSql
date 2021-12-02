@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.mobnav{
+background: #32268c;
+}
+.mobnavli {
+    display: block;
+    list-style: none;
+    background: #33268c;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    width: 100%;
+    margin: 10px;
+}
+.mobnavli a {
+    text-decoration: none;
+    color: #fff;
+}
+.mobnavli ul li {
+    list-style: none;
+}
+.mobnavli ul li a {
+    text-decoration: none;
+}

@@ -1,0 +1,409 @@
+ <<style>
+/* =============
+   Timeline
+============= */
+.timeline {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+  margin-bottom: 50px;
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.timeline .time-show {
+  margin-bottom: 30px;
+  margin-right: -75px;
+  margin-top: 30px;
+  position: relative;
+}
+
+.timeline .time-show a {
+  color: #ffffff;
+}
+
+.timeline:before {
+  background-color: rgba(121, 121, 121, 0.3);
+  bottom: 0;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 30px;
+  width: 2px;
+  z-index: 0;
+}
+
+.timeline .timeline-icon {
+  -webkit-border-radius: 50%;
+  background: #797979;
+  border-radius: 50%;
+  color: #ffffff;
+  display: block;
+  height: 20px;
+  left: -54px;
+  margin-top: -10px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 20px;
+}
+
+.timeline .timeline-icon i {
+  color: #ffffff;
+  font-size: 13px;
+  margin-top: 4px;
+  position: absolute;
+  left: 4px;
+}
+
+.timeline .time-icon:before {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+h3.timeline-title {
+  color: #797979;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+}
+
+.timeline-item {
+  display: table-row;
+}
+
+.timeline-item:before {
+  content: "";
+  display: block;
+  width: 50%;
+}
+
+.timeline-item .timeline-desk .arrow {
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid rgba(226, 226, 226, 0.3) !important;
+  border-top: 12px solid transparent;
+  display: block;
+  height: 0;
+  left: -12px;
+  margin-top: -12px;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+
+.timeline-item .timeline-desk .timeline-box {
+  padding: 20px;
+}
+
+.timeline-item .timeline-date {
+  margin-bottom: 10px;
+}
+
+.timeline-item.alt:after {
+  content: "";
+  display: block;
+  width: 50%;
+}
+
+.timeline-item.alt .timeline-desk .arrow-alt {
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid rgba(226, 226, 226, 0.3) !important;
+  border-top: 12px solid transparent;
+  display: block;
+  height: 0;
+  left: auto;
+  margin-top: -12px;
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  width: 0;
+}
+
+.timeline-item.alt .timeline-desk .album {
+  float: right;
+  margin-top: 20px;
+}
+
+.timeline-item.alt .timeline-desk .album a {
+  float: right;
+  margin-left: 5px;
+}
+
+.timeline-item.alt .timeline-icon {
+  left: auto;
+  right: -56px;
+}
+
+.timeline-item.alt:before {
+  display: none;
+}
+
+.timeline-item.alt .panel {
+  margin-left: 0;
+  margin-right: 45px;
+}
+
+.timeline-item.alt h4 {
+  text-align: right;
+}
+
+.timeline-item.alt p {
+  text-align: right;
+}
+
+.timeline-item.alt .timeline-date {
+  text-align: right;
+}
+
+.timeline-desk {
+  display: table-cell;
+  vertical-align: top;
+  width: 50%;
+}
+
+.timeline-desk h4 {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.timeline-desk .panel {
+  background: rgb(50 38 174 / 32%);
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 45px;
+  position: relative;
+  text-align: left;
+  border: 0;
+}
+
+.timeline-desk h5 span {
+  color: #0f0f0f;;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.timeline-desk p {
+  color: #0f0f0f;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.timeline-desk .album {
+  margin-top: 12px;
+}
+
+.timeline-desk .album a {
+  float: left;
+  margin-right: 5px;
+}
+
+.timeline-desk .album img {
+  height: 36px;
+  width: auto;
+  border-radius: 3px;
+}
+
+.timeline-desk .notification {
+  background: none repeat scroll 0 0 #ffffff;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.timeline-left {
+  margin-left: 20px;
+  width: auto;
+  display: block;
+}
+
+.timeline-left:before {
+  left: 0 !important;
+}
+
+.timeline-left .timeline-item {
+  display: block;
+}
+
+.timeline-left .timeline-desk {
+  display: block;
+  width: 100%;
+}
+
+.timeline-left .panel {
+  margin-bottom: 20px;
+}
+
+</style>
+ 
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="Asset Info">
+           
+             
+            <!-- Add New Form Start  -->
+ 				<div class="material mt-5">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Asset</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="allocto" class="form-label"> Branch</label>
+                           <select class="form-control" ng-model="vm.asset.branch.branchId"
+									 ng-options="branch.branchId as branch.branchName for branch in vm.branches" disabled
+									required>
+									 <option value="" disabled selected>Select Branch </option>
+							 </select>
+							 <span style="color:red" ng-show="branchErr">Branch is Mandatory</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="alloMaterial" class="form-label">Asset Type</label>
+                            <select id="alloMaterial" class="form-select"  ng-model="vm.asset.assetType" disabled>
+                               <option value="" disabled selected>Select Asset Type</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Laptops">Laptops</option>
+                             
+                            </select>
+                             <span style="color:red" ng-show="assetTypeErr">Asset Type is Mandatory</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Serial No    </label>
+                            <input type="text" class="form-control" id="serialNo" ng-model="vm.asset.serialNo" placeholder="Enter Serial No" disabled>
+                      	   <span style="color:red" ng-show="serialNoErr">Serial No is Mandatory</span>
+                      	
+                      
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Asset Id    </label>
+                            <input type="text" class="form-control" id="assetId"" ng-model="vm.asset.assetId" disabled placeholder="Enter Asset Id">
+                       	<span style="color:red" ng-show="assetIdErr">Asset Id  is Mandatory</span>
+                       	
+                       
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Purchase Order No</label>
+                            <input type="text" class="form-control" id="purchaseOrderNo" ng-model="vm.asset.purchaseOrderNo" disabled placeholder="Enter Purchase Order No">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Invoice No</label>
+                            <input type="text" class="form-control" id="invoiceNo" ng-model="vm.asset.invoiceNo" placeholder="Enter Invoice No" disabled>
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Invoice Date</label>
+                            <input type="date" class="form-control" id="invoiceDate" ng-model="vm.asset.invoiceDate" disabled>
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Make    </label>
+                            <input type="text" class="form-control" id="make" ng-model="vm.asset.make" placeholder="Enter make" disabled>
+                       	<span style="color:red" ng-show="makeErr">Make is Mandatory</span>
+
+                       
+                        </div>
+                        
+                         <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Model    </label>
+                            <input type="text" class="form-control" id="model" ng-model="vm.asset.model" placeholder="Enter Model" disabled>
+                        	<span style="color:red" ng-show="modelErr">Model is Mandatory</span>
+                        
+                        </div>
+                        
+                          <div class="col-md-6">
+                            <label for="alloMaterial" class="form-label">Status<sup
+                                    style="color: red;">*</sup></label>
+                            <select id="alloMaterial" class="form-select"  disabled  ng-model="vm.asset.status" >
+                               <option value="" disabled selected>Select Status</option>
+                                <option value="Working">Working</option>
+                                <option value="Scrap">Scrap</option>
+                             
+                            </select>
+                            <span style="color:red" ng-show="statusErr">Status is Mandatory</span>
+                        </div>
+                        
+                    </form>
+                    
+                    <hr>
+                      <legend class="dotted " style="color: #616060; font-size: 18px;"><b>Current Allocation Details</b>
+                    </legend>
+                    <hr>
+                      <form class="row g-3">
+                        <div class="col-md-12" ng-if="noAllocation">
+                        No Current  Allocation Details Found
+                        </div>
+                        <div class="col-md-6"  ng-if="!noAllocation">
+                            <label for="assectcod" class="form-label">Employee No    </label>
+                            <input type="text" class="form-control" id="make" ng-model="vm.allocation.employee.employeeNo" placeholder="Enter make" disabled>
+
+                       
+                        </div>
+                        <div class="col-md-6"  ng-if="!noAllocation">
+                            <label for="assectcod" class="form-label">Employee Name</label>
+                            <input type="text" class="form-control" id="make" ng-model="vm.allocation.employee.employeeName" placeholder="Enter make" disabled>
+                       	<span style="color:red" ng-show="makeErr">Make is Mandatory</span>
+
+                       
+                        </div>
+                       </form> 
+                       
+                        <hr>
+                      <legend class="dotted " style="color: #616060; font-size: 18px;"><b>Allocation History</b>
+                    </legend>
+                    <hr>
+                      <form class="row g-3">
+                        <div class="col-md-12" ng-if="noAllocationHistory">
+                        No Allocation History  Found
+                        </div>
+                        	<div class="row" ng-if="!noAllocationHistory">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <div class="timeline">
+                                        <article class="timeline-item alt">
+                                            <div class="text-right">
+                                                <div class="time-show first">
+                                                    <a href="#" class="btn btn-primary w-lg">  
+                                                    Material :{{vm.asset.make}} {{vm.asset.model}}-{{vm.asset.serialNo}}</br>
+                                                   AssetCode :{{vm.asset.tagCode}}</br> is Register on {{vm.asset.tagCode.addedDate|date:'dd-MM-yyyy'}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </article>
+                                         <article ng-class="$index%2 ==0 ? 'timeline-item': 'timeline-item alt'"  ng-repeat="timeline in vm.allocationHistory" >
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="timeline-box">
+                                                        <span ng-class="$index%2 ==0 ? 'arrow': 'arrow-alt'"></span>
+                                                        <span ng-class="$index%2 ==0 ? 'timeline-icon bg-success': 'timeline-icon bg-primary'" ><i class="mdi mdi-checkbox-blank-circle-outline"></i></span>
+                                                        <h4 ng-class="$index%2 ==0 ? 'text-success': 'text-primary'" >  {{timeline.tranactionType}} </h4>
+                                                        <p class="timeline-date text-muted"><small>on {{timeline.transactionDate|date}}</small></p>
+                                                        <p>This Asset {{timeline.tranactionType}} to  {{timeline.employee.employeeName}}   {{timeline.employee.employeeNo}}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                       
+                                       
+
+
+                                      
+                                    </div>
+                                    <!-- end timeline -->
+                                </div>
+                            </div>
+                        </div>
+                       </form> 
+                </div>
+			<!-- Add New Form End   -->
+			
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>

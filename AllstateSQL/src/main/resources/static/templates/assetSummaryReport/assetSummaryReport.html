@@ -1,0 +1,92 @@
+
+    <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">Asset Summary Report</h4>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        
+                    
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                         
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Sr No</th>
+                                            <th class="text-center">Asset Type</th>
+                                            <th class="text-center">Asset</th>
+                                             <th class="text-center">Model</th>
+                                             <th class="text-center">EPC</th>
+                                             <th class="text-center">Assigned Status</th>
+                                               <th class="text-center">Assigned Employee</th>
+                                             <th class="text-center">In/Out Status</th> 
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr ng-show="vm.assetSummary.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="report in vm.assetSummary| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                              <td class="text-center ">{{report.asset.assetName}}</td>
+                                            <td class="text-center ">{{report.asset.assetName}}</td>
+                                             <td class="text-center ">{{report.asset.model}}</td>
+                                             <td class="text-center ">{{report.epc}}</td>
+                                                <td class="text-center ">{{report.status}}</td>
+                                             <td class="text-center ">{{report.employee.employeeName}}</td>
+                                                 <td class="text-center ">{{report.in_out_status}}</td>
+                                        </tr>
+                                      
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+              
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+</div>
+
+
+  <!-- Required datatable js -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <script src="plugins/datatables/buttons.colVis.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>

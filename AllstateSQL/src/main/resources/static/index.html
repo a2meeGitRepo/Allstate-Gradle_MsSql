@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+    
+<!-- Mirrored from coderthemes.com/adminox/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 13:33:30 GMT -->
+<head>
+
+<!-- TEMPLATE ASSETS START -->
+        <meta charset="utf-8" />
+        <title>Allstate  </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ANGULAR ASSETS START -->
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-loader/angular-loader.min.js"></script>
+		<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+		<script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<script src="bower_components/chart.js/dist/Chart.min.js"></script>
+		<script	src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+		<script src="bower_components/tinymce/tinymce.min.js"></script>
+ 		<script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+ 		
+		<link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+		<script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+
+
+
+
+ <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-touch/angular-touch.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/chart.js/dist/chart.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="js/chartcustome.js"></script>
+<!--     <script src="index1.js"></script>
+ -->    <script src="js/script.js"></script>
+
+    <link rel="stylesheet" href="js/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/icons-1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+<link rel="stylesheet" href="css/email.css">
+
+
+<script type="text/javascript">
+		// Adapt your paths!
+		var Module = {
+			memoryInitializerPrefixURL : 'node_modules/bwip-js/',
+			preRun : [ function() {
+				Module.FS_createPreloadedFile("/", "Inconsolata.otf",
+						"node_modules/bwip-js/Inconsolata.otf", true, false);
+			} ],
+			postRun : [ function() {
+				var load_font = Module.cwrap("load_font", 'number', [ 'string',
+						'string', 'number' ]);
+				load_font("Inconsolata.otf", "INCONSOLATA", 108);
+			} ]
+		};
+	</script>
+	
+<!-- ********* DATA MATRIX ********** -->
+<script src="node_modules/bwip-js/freetype.js"></script>
+<script src="node_modules/bwip-js/bwip.js"></script>
+<script src="node_modules/bwip-js/lib/canvas.js"></script>
+<!-- <script src="node_modules/td-angular-barcode/dist/td-barcode.js"></script>
+ --><!-- ********* DATA MATRIX ********** -->
+
+
+
+
+
+
+
+
+<script src="bower_components/qrcode/lib/qrcode.min.js"></script>
+<script src="bower_components/angular-qr/angular-qr.min.js"></script>
+
+<!-- ********* DATA MATRIX ********** -->
+ <script src="node_modules/bwip-js/freetype.js"></script>
+<script src="node_modules/bwip-js/bwip.js"></script>
+<script src="node_modules/bwip-js/lib/canvas.js"></script>
+<!-- ********* DATA MATRIX ********** -->
+
+
+
+<script src="templates/app.js"></script>
+<!-- Main Start -->
+<script src="templates/main/main.module.js"></script>
+<script src="templates/main/main.controller.js"></script>
+<!-- Main End -->
+
+<!-- home Start -->
+<script src="templates/home/home.module.js"></script>
+<script src="templates/home/home.controller.js"></script>
+<!-- home End -->
+
+<!-- Generic Start -->
+<script src="templates/generic/generic.module.js"></script>
+<script src="templates/generic/generic.factory.js"></script>
+<script src="templates/generic/generic.http.js"></script>
+<script src="templates/generic/FileSaver.js"></script>
+<script src="templates/generic/json-export-excel.js"></script>
+
+<!-- Generic End -->
+<!-- Login form Start -->
+<script src="templates/login/login.module.js"></script>
+<script src="templates/login/login.controller.js"></script>
+<script src="templates/login/login.factory.js"></script>
+<script src="templates/login/login.http.js"></script>
+<!-- Login form End -->
+
+
+<!-- USER START -->
+<script src="templates/user/user.module.js"></script>
+<script src="templates/user/user.controller.js"></script>
+<!-- USER END -->
+
+<!-- ASSET START -->
+<script src="templates/asset/asset.module.js"></script>
+<script src="templates/asset/asset.controller.js"></script>
+<!-- ASSET END -->
+
+<!-- EMPLOYEE START -->
+<script src="templates/employee/employee.module.js"></script>
+<script src="templates/employee/employee.controller.js"></script>
+<!-- EMPLOYEE END -->
+
+
+<!-- TagUpload START -->
+<script src="templates/tagUpload/tagUpload.module.js"></script>
+<script src="templates/tagUpload/tagUpload.controller.js"></script>
+<script src="templates/tagUpload/barcode.js"></script>
+<!-- TagUpload END -->
+
+
+<!--AssetEmployeeMapped START -->
+<script src="templates/assetEmployeeMapped/assetEmployeeMapped.module.js"></script>
+<script src="templates/assetEmployeeMapped/assetEmployeeMapped.controller.js"></script>
+<!-- AssetEmployeeMapped END -->
+
+<!--Asset Info START -->
+<script src="templates/assetInfo/assetInfo.module.js"></script>
+<script src="templates/assetInfo/assetInfo.controller.js"></script>
+<!-- Asset Info END -->
+
+
+<!--MailManger START -->
+<script src="templates/mailManger/mailManger.module.js"></script>
+<script src="templates/mailManger/mailManger.controller.js"></script>
+<!-- MailManger END -->
+
+
+<!--Device START -->
+<script src="templates/device/device.module.js"></script>
+<script src="templates/device/device.controller.js"></script>
+<!-- Device  END -->
+
+
+
+<!--Notification START -->
+<script src="templates/notification/notification.module.js"></script>
+<script src="templates/notification/notification.controller.js"></script>
+<!-- Notification END -->
+
+<!--Allocation Report START -->
+<script src="templates/allocationReport/allocationReport.module.js"></script>
+<script src="templates/allocationReport/allocationReport.controller.js"></script>
+<!-- Allocation Report END -->
+
+
+<!--Asset Tag mapping  Report START -->
+<script src="templates/assetTagMapping/assetTagMapping.module.js"></script>
+<script src="templates/assetTagMapping/assetTagMapping.controller.js"></script>
+<!-- Asset Tag mapping  END -->
+
+
+
+<script src="js/table2excel.js"></script>
+
+
+    <body>
+
+<div ui-view="main"></div>
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/metisMenu.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+
+			<!-- DATA TABLES  START-->
+			 <!-- Required datatable js -->
+			        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+			        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+			        <!-- Buttons examples -->
+			        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+			        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+			        <script src="plugins/datatables/jszip.min.js"></script>
+			        <script src="plugins/datatables/pdfmake.min.js"></script>
+			        <script src="plugins/datatables/vfs_fonts.js"></script>
+			        <script src="plugins/datatables/buttons.html5.min.js"></script>
+			        <script src="plugins/datatables/buttons.print.min.js"></script>
+			        <script src="plugins/datatables/buttons.colVis.min.js"></script>
+			<!-- DATA TABLE END -->
+			
+			
+			  <!-- Tooltipster js -->
+        <script src="plugins/tooltipster/tooltipster.bundle.min.js"></script>
+        <script src="assets/pages/jquery.tooltipster.js"></script>
+        
+        
+        
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
+        <!--C3 Chart-->
+        <script type="text/javascript" src="plugins/d3/d3.min.js"></script>
+        <script type="text/javascript" src="plugins/c3/c3.min.js"></script>
+
+        <!--Echart Chart-->
+        <script src="plugins/echart/echarts-all.js"></script>
+
+        <!-- Dashboard init -->
+        <script src="assets/pages/jquery.dashboard.js"></script>
+
+        <!-- App js -->
+       
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+        
+        
+           <link href="assets/css/W3Css.css" rel="stylesheet" type="text/css" />
+
+    </body>
+
+<!-- Mirrored from coderthemes.com/adminox/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 13:34:00 GMT -->
+</html>

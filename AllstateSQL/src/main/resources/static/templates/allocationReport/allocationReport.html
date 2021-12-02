@@ -1,0 +1,145 @@
+ <script src="js/table2excel.js"></script>
+ <script type="text/javascript" src="js/jquery.table2excel.js"></script>
+
+ 
+ <div class="material mt-5" >
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b> Allocation Report </b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                    
+                         <div class="col-md-6">
+                            <label for="alloMaterial" class="form-label">Report Type<sup
+                                    style="color: red;">*</sup></label>
+                            <select id="alloMaterial" class="form-select"  ng-model="vm.report.reportType" ng-change="vm.callData(vm.report.reportType)">
+                               <option value="" disabled selected>Select Report Type</option>
+                                <option value="Asset">Asset</option>
+                                <option value="Employee">Employee</option>
+                             
+                            </select>
+                             <span style="color:red" ng-show="reportTypeErr">Report Type is Mandatory</span>
+                        </div>
+                    
+                          <div class="col-md-6" ng-if="vm.report.reportType=='Employee'">
+                            <label for="assectcod" class="form-label">Employee <sup style="color: red;">*</sup></label>
+                            
+                            
+                            <input  type="text" ng-model="vm.report.spec" name="employee" uib-typeahead="employee as employee.employeeName for employee in vm.employees | filter:$viewValue | limitTo:20" typeahead-no-results="codes" required 
+																		class="form-control typeahead-demo mandtry"   typeahead-on-select="vm.checkEmployee(supplier)" />
+							                                           
+						                                             
+                       	<span style="color:red" ng-show="empErr">Employee  is Mandatory</span>
+                       	
+                       
+                        </div>
+                           <div class="col-md-6" ng-if="vm.report.reportType=='Asset'">
+                            <label for="assectcod" class="form-label">Asset <sup style="color: red;">*</sup></label>
+                            
+                            
+                            <input  type="text" ng-model="vm.report.spec" name="asset" uib-typeahead="employee as employee.employeeName for employee in vm.employees | filter:$viewValue | limitTo:20" typeahead-no-results="codes" required
+																		class="form-control typeahead-demo mandtry"   typeahead-on-select="vm.checkEmployee(supplier)" />
+							                                           
+						                                             
+                       	<span style="color:red" ng-show="assetErr">Asset  is Mandatory</span>
+                       	
+                       
+                        </div>
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.generateReport(vm.report)">Generate Report</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                             <button type="submit" class="save" style="background: #26ae3d;" onClick="exportTableToExcelPackingBox()"><i class="bi bi-file-earmark-excel"></i></button>
+                           <button type="button" class="btn btn-success"  onclick="exportFile()">
+							<i class="fa fa-file-excel-o"></i> Export
+						</button>	
+                        </div>
+                    </form>
+                </div>
+  <div class="material" id="table2excel">
+        <div class="row d-flex justify-content-between">
+            <div class="col-4">
+                <img src="images/allstateHR1.png" alt="" srcset="">
+            </div>
+            <div class="col-4 text-center align-self-center">
+            <legend><b> Status Wise Recipt </b></legend>
+            </div>
+            <div class="col-4 text-end">
+                <address>
+                    allstate@gmail.com <br>
+                    All State Private Limited,<br>
+                    Hinjavdi Phase III, Pune. <br>
+                    Pune-411 002
+                </address>
+            </div>
+        </div>
+      <hr>
+        <div class="material-tbl mt-3">
+            <table class="text-center justify-content-center table-striped" style="width: 1149px;"  id="zzr2">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Asset Type</th>
+                        <th>Serial No</th>
+                        <th>Asset Id</th>
+                        <th>PO No</th>
+                        <th>Invoice No</th>
+                        <th>Invoice Date</th>
+                        <th>Age</th>
+                        <th>Status </th>
+                        <th>Make</th>
+                         <th>Model</th>
+                        <th>Tag Code </th>
+                        <th>Allocate Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="report in vm.reports">
+                        <th>{{$index+1}}</th>
+                        <td>{{report.asset.assetType}}</td>
+                          <td>{{report.asset.serialNo}}</td>
+                            <td>{{report.asset.assetId}}</td>
+                              <td>{{report.asset.purchaseOrderNo}}</td>
+                                <td>{{report.asset.invoiceNo}}</td>
+                         <td>{{report.asset.invoiceDate }}</td>
+                          <td>{{report.asset.age}}</td>
+                           <td>{{report.asset.status}}</td>
+                         <td>{{report.asset.make }}</td>
+                          <td>{{report.asset.model}}</td>
+                           <td>{{report.tagCode}}</td>
+                            <td>{{report.mappedDate}}</td>
+                              
+                       
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+		<script>
+function exportFile(){
+  var wb = XLSX.utils.table_to_book(document.getElementById('zzr2'));
+  XLSX.writeFile(wb, 'Tracation-ZZR2-report.xlsx');
+  return false;
+}
+</script>
+	<script>
+	$('#export_to_excel').click(function() {
+
+		//$("#export_to_excel").hide();
+		//$("#btn_sms").hide();
+		//$("#btn_desc").hide();
+		$("#zzr2").table2excel({
+			exclude : ".action",
+			name : "All Enterprises",
+			filename : "Tracation-ZZR2-report",
+			fileext : ".xls",
+			exclude_img : true,
+			exclude_links : true,
+			exclude_inputs : true,
+		});
+
+	});
+</script>
+	

@@ -1,0 +1,309 @@
+  <style>
+<!--
+
+-->
+/*Check Box*/
+.c_check {
+  visibility: hidden;
+  position: relative;
+  margin-right: .4em;
+   font-size: 2em;
+  height: .9em;
+  width: .9em;
+}
+.c_check:before, .c_check:after {
+  /* default checkbox */
+  box-sizing: border-box;
+  visibility: visible;
+  display: inline-block;
+  content: '';
+  touch-action: manipulation;
+  cursor: pointer;
+  /* position */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: .9em;
+  height: .9em;
+  /* design */
+  border: .1em solid grey;
+  border-radius: .1em;
+  transition: all .3s ease-in-out;
+}
+.c_check:after {
+  transition: all .3s ease-in-out, border-top, border-right;
+  transition-delay: 0s, .3s, .3s;
+  z-index: 2;
+}
+.c_check:checked:after {
+  height: .4em;
+  border-top: none;
+  border-right: none;
+  border-width: .15em;
+  border-radius: 0px;
+  border-bottom-left-radius: .05em;
+  border-color: #64c5b1;
+  transform: rotate(-45deg) translate(0.1em, 0.2em) scale(1.1);
+  box-shadow: -0.05em 0.08em 0.1em rgba(0, 0, 0, 0.5);
+}
+
+</style>
+ 
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="Asset">
+            
+            <!-- Upload Form Start  -->
+ 				<div class="material mt-5" ng-show="viewQRTab">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b> Assets Tag Registration </b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                     <div class="col-md-3">
+                     </div>
+                        <div class="col-md-6" id="printableArea">
+                      <label for="name13">Available  Tags: </label> <input  type="text" ng-model="vm.selecteTag" name="code" uib-typeahead="availableTag as availableTag.tagCode for availableTag in vm.availableTags | filter:$viewValue | limitTo:20" typeahead-no-results="codes" required
+																		class="form-control typeahead-demo mandtry"  typeahead-on-select="vm.unableBtn(supplier)" />
+							
+						                                             <span ng-show="tagErr" style="color:red">  * Tag is mandatory</span>
+						                                         	
+						             
+                        </div>
+                    
+                       
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.upateTags()">Assigned</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Upload End   -->
+             <!-- Upload Form Start  -->
+ 				<div class="material mt-5" ng-show="uploadTab">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Upload Assets</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                        <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 
+							                                              	 <input id="uploadAssets"  class="form-control"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="uploadErr" style="color:red">  * file is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Assets	.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	
+						             
+                        </div>
+                    
+                       
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.uploadSave()" ng-disabled="diabledSaveButton">Upload</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Upload End   -->
+            <!-- Add New Form Start  -->
+ 				<div class="material mt-5" ng-show="addNew">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Asset</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="allocto" class="form-label"> Branch<sup
+                                    style="color: red;">*</sup></label>
+                           <select class="form-control" ng-model="vm.asset.branch.branchId"
+									 ng-options="branch.branchId as branch.branchName for branch in vm.branches"
+									required>
+									 <option value="" disabled selected>Select Branch </option>
+							 </select>
+							 <span style="color:red" ng-show="branchErr">Branch is Mandatory</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="alloMaterial" class="form-label">Asset Type<sup
+                                    style="color: red;">*</sup></label>
+                            <select id="alloMaterial" class="form-select"  ng-model="vm.asset.assetType">
+                               <option value="" disabled selected>Select Asset Type</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Laptop">Laptop</option>
+                                  <option value="Dev Laptop">Dev Laptops</option>
+                                  <option value="Macbook">Macbook</option>
+                                  <option value="Surface">Surface</option>
+                             
+                            </select>
+                             <span style="color:red" ng-show="assetTypeErr">Asset Type is Mandatory</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Serial No<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="serialNo" ng-model="vm.asset.serialNo" placeholder="Enter Serial No">
+                      	   <span style="color:red" ng-show="serialNoErr">Serial No is Mandatory</span>
+                      	
+                      
+                        </div>
+                     <div class="col-md-6">
+                            <label for="alloMaterial" class="form-label">Status<sup
+                                    style="color: red;">*</sup></label>
+                            <select id="alloMaterial" class="form-select"  ng-model="vm.asset.status">
+                               <option value="" disabled selected>Select Status</option>
+                                <option value="Working">Working</option>
+                                <option value="Scrap">Scrap</option>
+                             
+                            </select>
+                            <span style="color:red" ng-show="statusErr">Status is Mandatory</span>
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Purchase Order No</label>
+                            <input type="text" class="form-control" id="purchaseOrderNo" ng-model="vm.asset.purchaseOrderNo" placeholder="Enter Purchase Order No">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Invoice No</label>
+                            <input type="text" class="form-control" id="invoiceNo" ng-model="vm.asset.invoiceNo" placeholder="Enter Invoice No">
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Invoice Date</label>
+                            <input type="date" class="form-control" id="invoiceDate" ng-model="vm.asset.invoiceDate" >
+                        </div>
+                        
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Make<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="make" ng-model="vm.asset.make" placeholder="Enter make">
+                       	<span style="color:red" ng-show="makeErr">Make is Mandatory</span>
+
+                       
+                        </div>
+                        
+                         <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Model<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="model" ng-model="vm.asset.model" placeholder="Enter Model">
+                        	<span style="color:red" ng-show="modelErr">Model is Mandatory</span>
+                        
+                        </div>
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.save(vm.asset)" ng-disabled="diabledSaveButton">Submit</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Add New Form End   -->
+			<!-- List View Star -->
+                <div class="material mt-5">
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <form class="d-flex search">
+                                <input class="me-2" type="search" placeholder="Search" aria-label="Search" ng-model="vm.serachText">
+                                <button class="searchBtn" type="submit"  ng-click="vm.loadAssets()">Search</button>
+                            </form>
+                        </div>
+                          <div class="col-2 text-center">
+                          
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" ng-change="vm.loadAssets()"   >
+                          </div>
+                          <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Upload Assets" ng-click="vm.upload()">   <i class="bi bi-upload"></i></button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Print " ng-click="vm.print()">   <i class="bi bi-printer-fill"></i></button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Add New Asset"style="margin-left: 128px;" ng-click="vm.addNew()">   <i class="bi bi-plus-square" ></i></button>
+                        </div>
+                      
+                    </div>
+                </div>
+                    <div class="material-tbl mt-3">
+                        <table id="datatable-buttons" class="text-center table-striped align-middle justify-content-center "
+                            style="width: 1150px;">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                     <th>Location</th>
+                                    <th>Asset Type</th>
+                                    <th>Serial No</th>
+                                    <th>Asset Id</th>
+                                    <th>Purchase Order No</th>
+                                    <th>Invoice No</th>
+                                    <th>Invoice Date</th>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <!--   <th>Tag</th> -->
+                                       <th>  <input class="c_check" type="checkbox"
+															ng-model="vm.selectAllChk"
+															ng-click="selectAllTable()"> 
+													</th>
+                                       <th>QR Code</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                             <tr ng-show="vm.assets.length <= 0"><td colspan="8" style="text-align:center;color:#5D6D7E;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Data Not Found!!
+							<tr dir-paginate="asset in vm.assets| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                        
+                                
+                                    <th>{{(vm.perPage*(vm.pageno-1))+($index+1)}}</th>
+                                    <td>{{asset.branch.branchName}}</td>
+                                    <td>{{asset.assetType}}</td>
+                                    <td>{{asset.serialNo}}</td>
+                                    <td>{{asset.assetId}}</td>
+                                    <td>{{asset.purchaseOrderNo}}</td>
+                                    <td>{{asset.invoiceNo}}</td>
+                                    <td>{{asset.invoiceDate|date:'dd-MM-yyyy'}}</td>
+                                    <td>{{asset.make}}</td>
+                                    <td>{{asset.model}}</td>
+                                  <!--    <td>{{asset.tagCode}}</td> -->
+                                     <td style="width:50px">
+													<input class="c_check" type="checkbox" ng-checked="asset.check"   
+														ng-click="selectQR($index)">
+															
+								</td>
+										<td>
+										
+										<div id="print{{$index}}">
+								                      <div  ng-init="config={ name : 'datamatrix', type : 'qrcode', text : asset.assetId, scale : { x : 2.0, y : 1.0 }, options : 'eclevel=M'}">
+																					<td-barcode config="config" id="$index"></td-barcode>
+																				
+														</div>
+								                     
+								                     </div>
+										</td>
+                                       <td>{{asset.status}}</td>
+                                    <td>
+                                       <i class="bi bi-pencil-square" ng-click="vm.edit(asset)"style="margin-right: 10px;"></i>
+                                 	  	<i ng-if="asset.tagCode==''||asset.tagCode==null"class="bi bi-tags" ng-click="vm.assingeTag(asset)"></i>
+                                   	
+                                   
+                                   
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+
+                    </div>
+                </div>
+		<!-- List View Star -->
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>

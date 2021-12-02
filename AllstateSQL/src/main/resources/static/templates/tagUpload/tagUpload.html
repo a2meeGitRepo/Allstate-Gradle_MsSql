@@ -1,0 +1,198 @@
+ <style>
+<!--
+
+-->
+/*Check Box*/
+.c_check {
+  visibility: hidden;
+  position: relative;
+  margin-right: .4em;
+   font-size: 2em;
+  height: .9em;
+  width: .9em;
+}
+.c_check:before, .c_check:after {
+  /* default checkbox */
+  box-sizing: border-box;
+  visibility: visible;
+  display: inline-block;
+  content: '';
+  touch-action: manipulation;
+  cursor: pointer;
+  /* position */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: .9em;
+  height: .9em;
+  /* design */
+  border: .1em solid grey;
+  border-radius: .1em;
+  transition: all .3s ease-in-out;
+}
+.c_check:after {
+  transition: all .3s ease-in-out, border-top, border-right;
+  transition-delay: 0s, .3s, .3s;
+  z-index: 2;
+}
+.c_check:checked:after {
+  height: .4em;
+  border-top: none;
+  border-right: none;
+  border-width: .15em;
+  border-radius: 0px;
+  border-bottom-left-radius: .05em;
+  border-color: #64c5b1;
+  transform: rotate(-45deg) translate(0.1em, 0.2em) scale(1.1);
+  box-shadow: -0.05em 0.08em 0.1em rgba(0, 0, 0, 0.5);
+}
+
+</style>
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="TAG Upload">
+     
+             <!-- Upload Form Start  -->
+ 				<div class="material mt-5" ng-show="uploadTab">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Upload Assets</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                        <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 
+							                                              	 <input id="uploadTags"  class="form-control"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="uploadErr" style="color:red">  * file is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Tags.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	
+						             
+                        </div>
+                    
+                       
+                        
+                          
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.uploadSave()" ng-disabled="diabledSaveButton">Upload</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Upload End   -->
+            <!-- Add New Form Start  -->
+ 				<div class="material mt-5" ng-show="addNew">
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b>Add New Asset</b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                        
+                        <div class="col-md-6">
+                            <label for="assectcod" class="form-label">Tag Code<sup style="color: red;">*</sup></label>
+                            <input type="text" class="form-control" id="tagCode"" ng-model="vm.tag.tagCode" placeholder="Enter TagCode">
+                       	<span style="color:red" ng-show="tagCodeErr">Tag Code is Mandatory</span>
+                       	
+                       
+                        </div>
+                        
+                        
+                        
+                        <div class="col-12 mt-4 text-center">
+                            <button type="submit" class="save" ng-click="vm.save(vm.tag)" ng-disabled="diabledSaveButton">Submit</button>
+                            <button type="submit" class="cancleBtn" ng-click="vm.cancle()">Cancel</button>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+			<!-- Add New Form End   -->
+			<!-- List View Star -->
+                <div class="material mt-5" >
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <form class="d-flex search">
+                                <input class="me-2" type="search" placeholder="Search" aria-label="Search" ng-model="vm.serachText">
+                                <button class="searchBtn" type="submit"  ng-click="vm.loadTags()">Search</button>
+                            </form>
+                        </div>
+                          <div class="col-2 text-center">
+                          
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" ng-change="vm.loadAssets()"   >
+                          </div>
+                          <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Upload Assets" ng-click="vm.upload()">   <i class="bi bi-upload" style="margin-right: 10px;"></i></button>
+                        </div>
+                          <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Print " ng-click="vm.print()">   <i class="bi bi-printer-fill"></i></button>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="addNew" type="submit" title="Add New Asset"style="margin-left: 68px;" ng-click="vm.add()">   <i class="bi bi-plus-square" ></i></button>
+                        </div>
+                    
+                    </div>
+                </div>
+                    <div class="material-tbl mt-3">
+                        <table id="datatable-buttons" class="text-center align-middle justify-content-center table-striped"
+                            >
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                     <th>Tag Code</th>
+                                   <th>Barcode</th>
+                            
+                                    <th>  <input class="c_check" type="checkbox"
+															ng-model="vm.selectAllChk"
+															ng-click="selectAllTable()"> 
+													</th>
+                                    <th>Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                             <tr ng-show="vm.tags.length <= 0"><td colspan="8" style="text-align:center;color:#5D6D7E;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Data Not Found!!
+							<tr dir-paginate="tag in vm.tags| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                        
+                                
+                                    <td>{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>
+                                    <td>{{tag.tagCode}}</td>
+                                    <td >
+                     <div id="print{{$index}}">
+                      <div  
+													ng-init="config={ name : 'Code 128', type : 'code128', text : tag.tagCode, scale : { x : 2.0, y : 1.0 }, options : 'eclevel=M'}">
+													<td-barcode config="config" id="$index"></td-barcode>
+												</br>	{{tag.tagCode}}
+												</div>
+                     
+                     </div>
+                                    
+												
+                                    
+                                    
+                                    
+                                    
+                                    </td>
+                                    
+                                   <td style="width:50px">
+													<input class="c_check" type="checkbox" ng-checked="tag.check"   
+														ng-click="selectQR($index)">
+															
+								</td>
+                             
+                                    <td> 
+                                    <button ng-class="tag.statusBit==1?'save':'cancleBtn'" type="submit" > <span ng-if="tag.statusBit==1">Available</span><span ng-if="tag.statusBit!=1">Assined</span></button>
+									</td>
+                                     
+                               
+                            </tbody>
+                        </table>
+                  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+
+                    </div>
+                </div>
+		<!-- List View Star -->
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>

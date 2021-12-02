@@ -1,0 +1,269 @@
+
+    <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">Tag Registration  </h4>
+
+                                   <ol class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active"><button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light" id="tooltip-touch" title="Add New User" ng-click="vm.add()">Add New </button></li>
+                                    </ol>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                       
+                          <!-- start add  row -->
+                          <div class="row" ng-show="addNew">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    
+
+                                   				 <div class="row">
+						                            <div class="col-md-12">
+						                                <div class="card-box">
+						                                    <h4 class="m-t-0 header-title">Register new asset</h4>
+						                                   
+						
+						                                    <form>
+						                                     	
+						                               <div class="form-row">
+						                                             <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Asset Type</label> <i style="color:red">*</i>
+						                                               <select class="form-control"
+																			ng-model="tagRgistration.assetType" ng-change="vm.getAssetByType(tagRgistration.assetType)"
+																					style="height: calc(2.25rem + 14px)" required>
+																			<option value="" disabled selected>Select Asset Type </option>
+																			<option value="1"  >Fixed </option>
+																			<option value="2"  >Movable </option>
+																		</select>
+																		<span ng-show="assetType" style="color:red">  * Asset type is mandatory</span>
+						                                            </div>
+						                                           <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Asset</label> <i style="color:red">*</i>
+						                                               <select class="form-control"
+																			ng-model="tagRgistration.asset"  ng-change="vm.setAssetDetials(tagRgistration.asset)"
+																			ng-options="asset as asset.brand.brandName +'-'+asset.assetName +'-'+asset.model  for asset in vm.assets"
+																					style="height: calc(2.25rem + 14px)" required>
+																			<option value="" disabled selected>Select Asset </option>
+																			
+																		</select>
+						                                            </div>
+						                                            
+						                                        </div>
+						                                        <div class="form-row">
+						                                            
+						                                            
+						                                           
+						                                        </div>
+						                                        <div class="row" ng-show="assetDetialTab">
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Category</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="assetName" ng-model="assetDetials.category.categoryName"  disabled>
+						                                           
+						                                            </div>
+						                                             <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Brand</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="assetName" ng-model="assetDetials.brand.brandName"  disabled>
+						                                           
+						                                            </div>
+						                                        </div>
+						                                         <div class="row" ng-show="assetDetialTab">
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Asset Name</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="assetName" ng-model="assetDetials.assetName"  disabled>
+						                                           
+						                                            </div>
+						                                             <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Model</label> <i style="color:red">*</i>
+						                                                <input type="text" class="form-control" id="assetName" ng-model="assetDetials.model"  disabled>
+						                                           
+						                                            </div>
+						                                        </div>
+						                                        <div class="row" ng-show="assetDetialTab">
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Asset Name</label> <i style="color:red">*</i>
+						                                                <textarea class="form-control" id="assetName" ng-model="assetDetials.description"  disabled></textarea>
+						                                           
+						                                            </div>
+						                                                 <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Default Zone</label> <i style="color:red">*</i>
+						                                               <select class="form-control"
+																			ng-model="tagRgistration.defaultZone.id" 
+																			ng-options="zone.id as zone.zoneName +'-'+zone.zoneLocation +'-'+zone.zoneId  for zone in vm.zones"
+																					style="height: calc(2.25rem + 14px)" >
+																			<option value="" disabled selected>Select Zone </option>
+																			
+																		</select>
+						                                            </div>
+						                                        </div>
+						                                         <div class="row" ng-show="assetDetialTab">
+						                                         <div class="form-group col-md-6">
+						                                                <label for="inputState" class="col-form-label">Quantity</label> <i style="color:red">*</i>
+						                                                <input type="number" class="form-control" id="assetName" ng-model="tagRgistration.quantity"  ng-change="vm.getAssetTags(tagRgistration.quantity,tagRgistration.assetType)">
+						                                           
+						                                            </div>
+						                                         </div>
+						                                        
+						                                          
+						                                          	<table class="table " ng-show="showTable">
+									                                        <thead>
+									                                        <tr>
+									                                            <th>#</th>
+									                                            <th class="text-center"><span ng-if="tagRgistration.assetType==1">EPC</span><span ng-if="tagRgistration.assetType==2">MAC Address</span></th>
+<!-- 									                                          <th class="text-center">Status</th>
+ -->									                                           
+									                                        </tr>
+									                                        </thead>
+									                                        <tbody>
+									                                        <tr ng-repeat=" tagRegistation in vm.tagRegistations">
+									                                            <th class="text-center" style="width:10%"">{{$index+1}}</th>
+									                                            <td class="text-center" style="width:40%">  <input type="text" class="form-control" id="{{$index+1}}" ng-model="tagRegistation.epc" ng-change="vm.checkEpc(tagRegistation.epc,tagRgistration.assetType,$index)" ></td>
+<!-- 									                                           <td class="text-center"><span ng-if="tagRegistation.status.code==200" style="color:green"><b>{{tagRegistation.status.message}}</b></span><span ng-if="tagRegistation.status.code==500" style="color:red"><b>{{tagRegistation.status.message}}</b></span></td>
+ -->									                                         
+									                                        </tr>
+									                                        
+									                                       
+									                                        </tbody>
+									                                </table>
+						                                          
+						                                          
+						                                          
+						                                          
+						                                       
+						                                        
+						                                        
+						                                        
+						                                        
+						                                       <div class="row">
+						                                        
+						                                         <div class="form-group col-md-2">
+						                                         	 <button type="button" class="btn btn-success waves-effect w-md waves-light" type="submit" ng-click="vm.saveRegistration()" ng-disabled="disabledClick">Save</button>
+						                                         
+						                                         </div>
+						                                         <div class="form-group col-md-4">
+						                                         		   <button type="button" class="btn btn-danger waves-effect w-md waves-light" ng-click="vm.cancle()">Cancel</button>
+						                                          </div>
+						                                       
+						                                        </div>
+						                                       
+						                                    </form>
+						                                </div>
+						                            </div>
+						                        </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- end add row -->
+
+                        <div class="row" style="margin-bottom:10px">
+								<div class="col-8">
+					              <label for="search">Search:</label>
+					              <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+					            </div>
+					            <div class="col-4 pull-right">
+					              <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage">
+					            </div>
+           				 </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                  <h4 class="m-t-0 header-title"><b>Tag List</b></h4>
+                                    <p class="text-muted font-13 m-b-30">
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%" style=" border: 1px solid #dee2e6">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">Sr No</th>
+                                              <th class="text-center">Type</th>
+                                            <th class="text-center">Category</th>
+                                            <th class="text-center">Brand</th>
+                                            <th class="text-center">Asset</th>
+                                            <th class="text-center">EPC</th>
+                                         
+                                           <!--  <th class="text-center">Register By</th> -->
+                                            <th  class="text-center">Register Date</th>
+                                              <th  class="text-center">Register Through</th>
+                                                 <th  class="text-center">Status</th>
+                                          
+                                          <!--   <th>Action</th> -->
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr ng-show="vm.assetsRegistrations.length <= 0"><td colspan="11" style="text-align:center;">Data Not Found!!
+										<tr dir-paginate="assetsRegistration in vm.assetsRegistrations | filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+							
+                                           <td class="text-center">{{$index+1}}</td>
+                                            <td class="text-center"><span ng-if="assetsRegistration.asset.assetType==1">RFID DEVICE</span><span ng-if="assetsRegistration.asset.assetType==2">BLE RFID DEVICE </span></td>
+                                           
+                                             <td class="text-center">{{assetsRegistration.asset.category.categoryName}}</td>
+                                                <td class="text-center">{{assetsRegistration.asset.brand.brandName}}</td>
+                                            <td class="text-center">{{assetsRegistration.asset.assetName}}-{{asset.model}}</td>
+                                             <td class="text-center">{{assetsRegistration.epc}}</td>
+<!--                                             <td class="text-center">{{assetsRegistration.registationBy.firstName}} {{assetsRegistration.registationBy.lastName}}</td>
+ -->                                             <td class="text-center">{{assetsRegistration.registationDate|date:'dd-MM-yyyy'}}</td>
+                                                                         <td class="text-center">{{assetsRegistration.regidtrationThrough}}</td>
+                                                 <td class="text-center">
+                                                 
+                                                 <button style="width:100px" ng-class="assetsRegistration.statusId==1 ? 'btn btn-rounded btn-success':'btn btn-rounded btn-warning'">
+                                            		   <span ng-if="assetsRegistration.statusId==1"> AVAILABLE</span><span ng-if="assetsRegistration.statusId==2"> USED</span>
+                                            		</button>
+                                                 
+                                                 </td>
+                                                                         
+                                            <td class="text-center">
+                                            	
+                                            
+                                         </td>
+                                           
+                                        </tr>
+                                      
+                                        </tbody>
+                                    </table>
+                                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+              
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+</div>
+
+
+  <!-- Required datatable js -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap4.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <script src="plugins/datatables/buttons.colVis.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>

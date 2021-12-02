@@ -1,0 +1,44 @@
+ <div >
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab style="    text-align: left;"heading="Asset">
+            
+            <!-- Upload Form Start  -->
+ 				<div class="material mt-5" >
+                    <legend class="dotted text-center" style="color: #616060; font-size: 18px;"><b> Assets Tag Registration </b>
+                    </legend>
+                    <hr>
+                    <form class="row g-3">
+                     
+                        <div class="col-md-6" id="printableArea">
+                      <label for="name13">Asset Id : </label> 
+                       <input type="text" class="form-control" id="assetIdNo" ng-model="vm.asset.assetId"  ng-change="checkAssetId(vm.asset.assetId)" autofocus  placeholder="Enter AssetId">
+                      	<span ng-show="assetIdErr" style="color:red"> {{assetIdMsg}}</span>
+                      	 <span ng-show="assetIdVrf" style="color:green"> {{assetIdMsg}}</span>
+                      	  <span ng-show="assetMan" style="color:red"> Asset Id is Mandatory</span>
+                      	
+						                                         	
+						             
+                        </div>
+                     <div class="col-md-6" id="printableArea">
+                      <label for="name13">RFID Tag : </label> 
+                       <input type="text" class="form-control" id="rfidTag" ng-model="vm.asset.rfidTag"  ng-change="checkRfidTag(vm.asset.rfidTag)" autofocus  placeholder="Enter Rfid Tag">
+                      	<span ng-show="rfidTagErr" style="color:red"> {{rfidTagMsg}}</span>
+                      	 <span ng-show="rfidTagVrf" style="color:green"> {{rfidTagMsg}}</span>
+                      	  <span ng-show="tagMan" style="color:red"> Tag is Mandatory</span>
+                      	 
+                      	
+						                                         	
+						             
+                        </div>
+                       
+                        
+                          
+                       
+                    </form>
+                </div>
+			<!-- Upload End   -->
+     
+            </uib-tab>
+           
+        </uib-tabset>
+    </div>
